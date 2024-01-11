@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>element</title>
+    <style>
+        #cons{
+            width: 400px;
+            height: 150px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            overflow: auto;
+        }
+        table > tbody > tr:first-child > td > input:first-child {
+            background-color: #0f0;
+        }
+        .qq{
+            background-color: #f0f;
+        }
+        .ww{
+            background-color: #0ff;
+        }
+    </style>
+    <script>
+        
+        //var cons = document.getElementById("cons")
+        //alert(cons.innerHTML)
+
+        //window.onload 실행시 function() 내용으로 실행해라
+        window.onload=function(){
+            //alert("또 왔어")
+            var cons = document.getElementById("cons")
+            //alert(cons.innerHTML)
+            cons.innerHTML = "또 왔어요<br/>"
+
+            window.document.frm.pid.value = "aaa"
+            frm.pname.value = "운만씨"  //window.document 생략 가능
+            
+           // pname.value = "건우야"  에러발생 : pname 모름
+           frm.pname.style.backgroundColor = "#ff0"  
+           //background-color : 연산을 막기위해 카멜표기법으로 변경
+
+           function ddd(){
+            document.getElementById("rf").setAttribute('checked', true) 
+           }
+
+           ddd()
+           eee()        // 에러발생하지 않음
+
+
+
+           //둘다 동일한 작업을 함
+           frm.email2.value = "다음"
+          //document.getElementById("em_google").setAttribute('selected', true) 
+          //frm.email2.value = "알리" //option 이 없는 값을 넣을 경우 select 선택항목이 없어지는 현상
+                                      // 하지 말것
+
+            frm.content.setAttribute('class', 'ww')  
+            
+            
+            function idchk(){
+                alert("눌렀냐?")
+            }
+
+            frm.pname_btn.onclick=function(){
+                //alert("이름이 왜?")
+                this.value = "이름확인완료"
+                this.disabled = true
+            }
+
+
+        }
+
+        //eee()  에러발생
+        function eee(){
+            document.getElementById("hor").setAttribute('checked', true) 
+        }
+
+        function idchk2(){
+            //alert("눌렀냐2?")
+            frm.pid.readOnly = true
+        }
+    </script>
+</head>
+<body>
+    <h1>element</h1>
+    <form action="" name="frm">
+        <table border="">
+            <tr>
+                <td>아이디</td>
+                <td><input type="text" name="pid">
+                    <input type="button" value="id 중복확인" onclick="idchk2()">
+                    <!-- idchk() 는 window.onload 내부함수이므로 접근불가 -->
+                </td>
+            </tr>
+            <tr>
+                <td>이름</td>
+                <td><input type="text" name="pname">
+                    <input type="button" name="pname_btn" value="이름확인" >
+                </td>
+            </tr>
+            <tr>
+                <td>성별</td>
+                <td>
+                    <label><input type="radio" name="gender" value="m">남</label>
+                    <label><input type="radio" name="gender" value="f" id="rf">여</label>
+                    <label><input type="radio" name="gender" value="it">it인</label>
+                </td>
+            </tr>
+            <tr>
+                <td>취미</td>
+                <td>
+                    <label><input type="checkbox" name="hobby" value="sleep">잠자기</label>
+                    <label><input type="checkbox" name="hobby" value="game">게임</label>
+                    <label><input type="checkbox" name="hobby" value="riding" id="hor">가즈아</label>
+                </td>
+            </tr>
+            <tr>
+                <td>email</td>
+                <td><input type="text" name="email1">@
+                    <select name="email2">
+                        <option >네이버</option>
+                        <option  id="em_google">구글</option>
+                        <option >다음</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td  class="qq">파일</td>
+                <td><input type="file" name="ff"></td>
+            </tr>
+            <tr>
+                <td>남기실말</td>
+                <td>
+                    <textarea name="content" cols="50" rows="5">남기실 개</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" name="" value="가입">
+                    <input type="reset" name="" value="취소">
+                </td>
+                
+            </tr>
+           
+        </table>
+    </form>
+
+    <div id="cons">안냐세요</div>
+
+    <script>
+
+        //var cons = document.getElementById("cons")
+        //alert(cons.innerHTML)
+    </script>
+</body>
+</html>

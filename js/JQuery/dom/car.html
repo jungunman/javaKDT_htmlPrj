@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>car</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+
+        section{
+            width: 900px;
+            height: 600px;
+            background: url(../car.jpg);
+            margin: auto;
+        }
+
+        section > div{
+            width: 90px;
+            height: 100px;
+            background-color: #ff0;
+            float: left;
+            
+        }
+    </style>
+    <script src="../jquery-3.7.1.min.js"></script>
+    <script>
+        $(function(){
+
+            let blurPos = [-1,-1,-1,-1,-1,-1,-1,-1];
+            let blurindex = [-11,-10,-9,-1,1,9,10,11];
+
+            for (let i = 0; i < 60; i++) {
+                $("section").append(`<div></div>`)
+            }
+
+            $("section > div").mouseover(function(){
+                //console.log($(this).html())
+                $(this).css({
+                    opacity:"0"
+                })
+
+                let pointer = $(this).index();
+                console.log("pointer%10 : "+ pointer%10);
+                console.log("pointer%9 : "+ pointer%9);
+                for (let i = 0; i < blurPos.length; i++) {
+                    if(pointer+blurindex[i] >=0 && pointer%10 !=9 && pointer%10 !=0){
+                        blurPos[i] = pointer+blurindex[i];
+                    }
+                    if(pointer%10 !=9){
+
+                    }
+                }
+
+                for (const blur of blurPos) {
+                    console.log($("section > div").eq(blur).index());
+                    $("section > div").eq(blur).css({opacity : "0.5"});
+                }
+
+
+                
+            })
+
+            $("section > div").mouseout(function(){
+                //console.log($(this).html())
+                $(this).css({
+                    opacity:"1"
+                })
+
+               
+                for (let i = 0; i < blurPos.length; i++) {
+                    $("section > div").eq(blurPos[i]).css({opacity : "1"});
+                    blurPos[i] = -1;
+                }
+
+            })
+
+
+        })
+    </script>
+</head>
+<body>
+    <h1>car</h1>
+    <section></section>
+</body>
+</html>

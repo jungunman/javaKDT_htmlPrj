@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가변 매개 변수쓰</title>
+    <style>
+        div{
+            margin-top: 5px;
+            border : 1px solid #000;
+            width: 150px;
+            padding :20px;
+        }
+
+    </style>
+</head>
+<body>
+    <script>
+
+    shape();
+    shape(1);
+    shape(2,3,4);
+    shape(5,6);
+    shape(7,8,9,10);
+    shape(5);
+
+        function shape(...len){
+            switch(len.length){
+                case 1:
+                var r = len[0];
+                document.write(`
+                    <div class="cir">
+                        <h1>원</h1>
+                        <h2> 둘레 : ${parseInt(r*Math.PI/2)} </h2>
+                        <h2> 넓이 : ${parseInt(r*r*Math.PI)} </h2>
+                    </div>
+                `);
+                    break;
+                case 2:
+                    var w = len[0];
+                    var h = len[1];
+                    document.write(`
+                        <div class="rec">
+                            <h1>직사각형</h1>
+                            <h2> 둘레 : ${(w+h)*2} </h2>
+                            <h2> 넓이 : ${w*h} </h2>
+                        </div>
+                    `);
+                    break;
+                case 3:
+                    var w = len[0];
+                    var h = len[1];
+                    var s = len[2];
+                document.write(`
+                    <div class="tri">
+                        <h1>삼각형</h1>
+                        <h2> 둘레 : ${w+h+s} </h2>
+                        <h2> 넓이 : ${w*h/2} </h2>
+                    </div>
+                `);
+                    break;
+                default:
+                    document.write(`<h2>도형이 아니무니다</h2>`);
+                    break;
+            }
+            
+        }
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>object</title>
+</head>
+<body>
+    <h1>object</h1>
+    <script>
+        var arr1 = {
+            "호랑이":"포유류","사자":"포유류",곰:"포유류",
+            독수리:"조류",오타니:"이도류","사자":"팔자"
+        }
+        document.write(arr1+"<br/>")
+        console.log(arr1)
+        document.write(arr1[0]+"<br/>")
+       // document.write(arr1[곰]+"<br/>") error
+       document.write(arr1["곰"]+"<br/>")
+       document.write(arr1.곰+"<br/>")
+       //document.write(arr1."곰"+"<br/>") error
+
+       //대입
+       arr1.독수리 = "발톱"
+       arr1["호랑이"] = 123
+
+       //추가
+       arr1.상어 = "어류"
+       arr1["악어"] = 987.6545
+
+       //삭제
+       delete arr1.오타니
+       delete arr1["곰"]
+       delete arr1.사타니 //존재하지 않는 key 삭제시 에러발생 안함
+       delete arr1["코요테"] //존재하지 않는 key 삭제시 에러발생 안함
+       console.log(arr1)
+
+       //존재 확인
+       document.write(("사자" in arr1)+"<br/>") //key 로 확인
+       document.write(("어류" in arr1)+"<br/>") //value 확인 불가
+       document.write(("시라소니" in arr1)+"<br/>")
+
+        var kk = Object.keys(arr1)
+        document.write(kk+Array.isArray(kk)+"<br/>")
+        var vv = Object.values(arr1)
+        document.write(vv+Array.isArray(vv)+"<br/>")
+
+/*
+반, 성별, 이름, 국어, 영어, 수학 , 총점, 평균, 등급, 등수 를 출력하세요
+
+정렬 순서
+반 > 성별 > 평균 > 이름
+
+
+등급에 따라 수 - 빨강, 우 - 주황, 미 - 노랑 , 양 - 녹색 , 가 - 보라 로 배경생을 지정하세요
+
+div로 구성하세요
+
+
+
+*/
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>testGame</title>
+    <style>
+
+        .field{
+            width: 700px;
+            height: 700px;
+            border: 3px solid black;
+            position: relative;
+        }
+
+        .me{
+            width: 50px;
+            height: 50px;
+            background-color: black;
+            position: absolute;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .enamy{
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            position: absolute;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="field">
+        <script>
+            /*Start Position*/
+            var enaies = [
+                {
+                    "name" : "1",
+                    "X" : 50,
+                    "Y" : 50,
+                    "alive" : true,
+                },
+                {
+                    "name" : "2",
+                    "X" : 300,
+                    "Y" : 50,
+                    "alive" : true
+                },
+                {
+                    "name" : "3",
+                    "X" : 550,
+                    "Y" : 50,
+                    "alive" : true
+                },
+                {
+                    "name" : "4",
+                    "X" : 50,
+                    "Y" : 50,
+                    "alive" : true
+                },
+                {
+                    "name" : "5",
+                    "X" : 50,
+                    "Y" : 600,
+                    "alive" : true
+                },
+                {
+                    "name" : "6",
+                    "X" : 300,
+                    "Y" : 600,
+                    "alive" : true
+                },
+                {
+                    "X" : 600,
+                    "Y" : 600,
+                    "alive" : true
+                },
+            ]
+
+
+            var meX = 325;
+            var meY = 325;
+            
+            for (const enamy of enaies) {
+                document.write(`<div class="enamy" style="top:${enamy.Y}; left:${enamy.X};"></div>`);
+            }
+
+            document.write(`<div class="me" style="top:${meY}px; left:${meX}px;">○</div>`);
+        </script>
+    </div>
+
+
+
+    
+    <script>
+        window.addEventListener("keydown",e=>{
+            const key = document.querySelector(`.me`);
+            console.log(`me : ${key}`);
+            console.log(e);
+        })
+        /*
+        window.addEventListener("keyup",e=>{
+            console.log(e);
+        })
+        */
+    </script>
+
+</body>
+</html>

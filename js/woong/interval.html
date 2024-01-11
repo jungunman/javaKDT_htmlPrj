@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+
+        html,body{
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let body = document.querySelector("body");
+        let h1 = document.querySelector("h1");
+        let limit = 1;
+        let button;
+
+        function clock () {
+            let now = new Date();
+
+            h1 = document.querySelector("h1");
+
+            if(h1 != null){
+                h1.parentNode.removeChild(h1);
+            }
+
+            if(button != null){
+                body.removeChild(button);
+                button = null;
+            }
+
+            body.innerHTML = `<h1> ${now.getHours()}시 ${now.getMinutes()}분 ${now.getSeconds()}초</h1>`;
+            
+            limit+=1;
+            if(limit % 6 == 0){
+                if(confirm("중지?")){
+                    body.innerHTML = `<h1> 시간 멈춤 </h1> <button>재시작</button>`
+                    button = document.querySelector("button");
+                    clearInterval(time);
+                    button.addEventListener("click",buttonClickHandler);
+                }
+            }
+
+        }
+
+        
+
+        let time =setInterval(clock, 1000);
+        
+
+        function buttonClickHandler(){
+            time = setInterval(clock, 1000);
+        }
+    
+    </script>
+    <button onclick=""></button>
+</body>
+</html>

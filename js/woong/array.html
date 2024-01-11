@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>array</title>
+</head>
+<body>
+    <script>
+        var pName = ["장동건","정우성","조인성","정운만","현빈","원빈","정해인"];
+        var jum = [78, 74, 65,100,91, 89, 71 ,71];
+
+        for (const i in pName) {
+            if(jum[i] >= 75){
+                document.write(`<h3>${pName[i]} 점수 : ${jum[i]}</h3>`);
+            }
+        }
+
+    </script>
+</body>
+</html>

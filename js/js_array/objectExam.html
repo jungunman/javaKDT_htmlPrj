@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>objectExam</title>
+    <script>
+        /*
+반, 성별, 이름, 국어, 영어, 수학 , 총점, 평균, 등급, 등수 를 출력하세요
+정렬 순서
+반 > 성별 > 평균 > 이름
+등급에 따라 수 - 빨강, 우 - 주황, 미 - 노랑 , 양 - 녹색 , 가 - 보라 로 배경생을 지정하세요
+div로 구성하세
+*/
+        const gradeArr = "가가가가가가양미우수수"
+        const oriArr = [
+            "1,일효리,남,77,78,72",
+            "2,이효리,남,57,58,52",
+            "3,삼효리,여,67,68,62",
+            "1,사효리,여,97,98,92",
+            "1,오효리,남,87,88,82",
+            "2,육효리,여,57,68,72",
+            "2,칠효리,남,47,38,22",
+            "3,팔효리,여,77,88,92",
+            "3,구효리,남,76,85,24",
+            "2,열효리,여,71,82,23",
+            "3,나효리,여,79,85,22",
+            "2,가효리,남,97,68,24",
+            "3,다효리,남,17,28,32",
+            "1,라효리,여,77,48,62",
+            "2,마효리,여,76,83,21"
+        ]
+        //document.write("5+3*5")
+        //document.write(eval("5+3*5"))
+        var data = []
+        for (const ori of oriArr) {
+            const arr = ori.split(",")
+            var st = {
+                ban:arr[0],
+                name:arr[1],
+                gender:arr[2],
+            }
+            st.jum = []
+            for (const i of arr.slice(3)) {
+                st.jum.push(eval(i))
+            }
+
+            st.tot = 0
+            for (const j of st.jum) {
+                st.tot += j
+            }
+            st.avg = Math.floor( st.tot/st.jum.length)
+            st.grade = gradeArr[parseInt(st.avg/10)]
+           
+            data.push(st)
+        }
+
+        for (var me of data) {
+
+            me.rank = 1
+            for (const you of data) {
+            
+                if(me.avg < you.avg && me.ban == you.ban && me.gender == you.gender){
+                    me.rank++
+                }
+            }
+            console.log(me)
+        }
+    </script>
+    <style>
+        section{
+            width: 930px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            margin: auto;
+        }
+        section > div{
+            width: 920px;
+            height: 30px;
+            margin: 0px 5px;
+            clear: both;
+            
+        }
+
+        section > div > div{
+            width: 80px;
+            height: 20px;
+            line-height: 20px;
+            padding: 5px;
+            float: left;
+            text-align: center;
+            
+        }
+        .수{
+            background-color: #f00;
+        }
+        .우{
+            background-color: #fa0;
+        }
+        .미{
+            background-color: #ff0;
+        }
+        .양{
+            background-color: #0f0;
+        }
+        .가{
+            color: #fff;
+            background-color: #00f;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>objectExam</h1>
+    
+    <section>
+        
+            <script>
+                document.write("<div>")
+                for (const ttt of "반,성별,이름,국어,영어,수학,총점,평균,등급,등수".split(",")) {
+
+                    document.write("<div>"+ttt+"</div>")
+                }
+                document.write("</div>")
+
+                for (const ban of "1,2,3".split(",")) {
+                    document.write("<div>"+ban+"반 >>></div>")
+                    for (const gender of "남,여".split(",")) {
+                        document.write("<div> [ "+gender+" ]</div>")
+
+                        for (var r = 1 ; r < data.length; r++) {
+                            for (const st of data) {
+                                if(ban == st.ban && gender==st.gender && r == st.rank){
+
+                                    var ttt = "<div class="+st.grade+">"
+                                
+                                        for (const title of "ban,gender,name".split(",")) {
+                                            ttt +="<div>" + st[title]+ "</div>"
+                                        }
+                                        for (const j of st.jum) {
+                                            ttt +="<div>" + j+ "</div>"
+                                        }
+                                        
+                                        for (const title of "tot,avg,grade,rank".split(",")) {
+                                            ttt +="<div>" + st[title]+ "</div>"
+                                        }
+
+                                        ttt += "</div>"
+                                    document.write(ttt)
+                                }
+                    
+                            }
+                        }
+                    }
+                }
+
+                
+
+
+            </script>
+        
+    </section>
+
+</body>
+</html>

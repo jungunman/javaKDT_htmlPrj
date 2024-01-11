@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>안팔건데의 피자가게</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            width: 500px;
+            margin: 0 auto;
+        }
+
+        body>div{
+            border: 1px solid #000;
+            padding: 10px;
+        }
+
+        body>div>h4{
+            padding-top: 5px;
+        }
+
+        body>div>p{
+            padding-bottom: 5px;
+        }
+        body>div>h3{
+            border-bottom: 1px solid #000;
+            padding-bottom: 15px;
+        }
+
+        body>div>div{
+            border-top: 1px solid #000;
+            padding: 5px 5px 0px 5px;
+            font-weight: 600;
+            font-size: 15px;
+        }
+        
+        h1{
+            text-align: center;
+            padding-bottom: 50px;
+            border-bottom: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        order("콤비네이션 피자");
+
+        function order(menu = "하와이안"){
+            var price = {"하와이안 피자" : 15000, "불고기 피자": 18000, "치즈 피자" : 130000, "콤비네이션 피자":9000, "불고기":1000, "소고기" :2000, "돼지고기":1500,"인육":5000,
+                            "콰트로 치즈" : 1000, "체다 치즈":500, "모짜렐라 치즈":800, "하나둘셋치즈":2000, "파프리카":300, "아프리카":500, "아프니까":700,"청춘일까":10000,
+                            "바이트 도우" : 2000, "치즈 바이트" : 3000, "고구마 치즈 바이트":5000, "기본": 0, "스몰":-500, "기본":0, "미디움": 500, "미꾸라지": 1000
+                        };
+
+            var menus = [];
+            var totalPrice = 0;
+            menus.push(menu);
+            console.log(menus);
+
+            function choice(isSelected){
+                if(isSelected){
+                    while(true){
+                        
+                        var ques = prompt("무슨 토핑류를 추가하시겠습니까? ex) 고기류, 치즈 재료, 야채류, 도우 변경, 사이즈 변경");
+
+                        if(ques == "고기류"){
+                            menus.push(prompt('불고기, 소고기, 돼지고기, 인육'));
+                        }else if(ques == "치즈 재료"){
+                            menus.push(prompt('콰트로 치즈, 체다 치즈, 모짜렐라 치즈, 하나둘셋치즈'));
+                        }else if(ques == "야채류"){
+                            menus.push(prompt('파프리카, 아프리카, 아프니까, 청춘일까'));
+                        }else if(ques == "도우 변경"){
+                            menus.push(prompt('바이트 도우, 치즈 바이트, 고구마 치즈 바이트, 기본'));
+                        }else if(ques == "사이즈 변경"){
+                            menus.push(prompt('기본, 스몰, 미디움, 미꾸라지'));
+                        }
+
+
+                        if(prompt("토핑류를 더 추가 하시겠습니까? (Y/N)")=="N"){
+                            break;
+                        }
+                    }
+                }
+            }
+
+            choice(prompt("토핑류를 추가 하시겠습니까? (Y/N)")=="Y");
+
+            for (const menu of menus) {
+                if(price[menu] != undefined){
+                    totalPrice+= price[menu];
+                }
+            }
+
+
+            //빌지 작성
+            document.write(`
+                <h1>안팔건데의 피자 가게</h1>
+                <div>
+                    <h3>메뉴 이름 - ${menu} (${price[menu]})</h3>
+                    ${menus.length==1?"":"<h4>추가한 토핑 : </h4>"}
+            `);
+                
+            if(menus.length != 1){
+                for (const topping of menus) {
+                    if(topping!=menu && price[topping]){
+                        document.write(`<p>${topping} (${price[topping]})</p>`);
+                    }
+                }
+            }
+
+            //div 닫기
+            document.write(`
+                <div>총 결제 금액 : ${totalPrice}</div>
+            </div>`);
+
+        }
+    </script>
+</body>
+</html>

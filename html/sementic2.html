@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sementic2</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            width: 1000px;
+            margin: 0 auto;
+        }
+        header{
+            margin-top: 30px;
+            width: 1000px;
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+            border: 2px solid black;
+            margin-bottom: 10px;
+        }
+        .navs{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .navs>nav{
+            width: 310px;
+        }
+        .navs>nav>ul{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .navs>nav>ul>li{
+            padding: 4px 10px;
+        }
+        .navs>nav:first-child{
+           background-color: yellow;
+        }
+        .navs>nav:last-child{
+            background-color: orange;
+        }
+        .navs>nav>ul>li{
+            list-style: none;
+        }
+        header>div:first-child{
+            width: 200px;
+            height: 96px;
+            background-color: yellow;
+            font-size: 30px;
+            text-align: center;
+            padding: 30px 15px;
+            font-weight: 600;
+        }
+
+        main{
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        main>aside{
+            width: 25%;
+            padding:20px;
+            border: 2px solid black;
+        }
+        main>section{
+            width: 70%;
+        }
+        main>section>article{
+            margin-bottom: 10px;
+            border: 2px solid black;
+            padding: 20px;
+        }
+
+        main>aside>div{
+            margin-top: 10px;
+            background-color: silver;
+        }
+        
+        footer{
+            margin-top: 10px;
+            border: 2px solid black;
+            width: 1000px;
+            height: 90px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div>WEB-Logo</div>
+        <div class="navs">
+            <nav>
+                <ul>
+                    <li>menu-1</li>
+                    <li>menu-2</li>
+                    <li>menu-3</li>
+                    <li>menu-4</li>
+                </ul>
+            </nav>
+            <nav>
+                <ul>
+                    <li>menu-1</li>
+                    <li>menu-2</li>
+                    <li>menu-3</li>
+                    <li>menu-4</li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <article>
+                <h2>Main Article</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Minus consequatur dolores optio repellendus iure laborum suscipit illum possimus quaerat veniam,
+                     magnam esse aliquid distinctio quam ea quidem aspernatur ratione reprehenderit.</p>   
+            </article>
+            <article>
+                <h2>Main Article</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Minus consequatur dolores optio repellendus iure laborum suscipit illum possimus quaerat veniam,
+                     magnam esse aliquid distinctio quam ea quidem aspernatur ratione reprehenderit.</p> 
+            </article>
+            <article>
+                <h2>Main Article</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Minus consequatur dolores optio repellendus iure laborum suscipit illum possimus quaerat veniam,
+                     magnam esse aliquid distinctio quam ea quidem aspernatur ratione reprehenderit.</p> 
+            </article>
+        </section>
+        <aside>
+            <h2>right Aside</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Minus consequatur dolores optio repellendus iure laborum suscipit illum possimus quaerat veniam,
+                 magnam</p>
+                <form action="#">
+                    <input type="text">
+                    <input type="submit" value="submit">
+                </form> 
+            <div>
+                <h2>Text</h2>
+                <p>banner</p>
+            </div>
+        </aside>
+    </main>
+
+    <footer>
+        <h3>HTML5 취업하고 싶다!</h3>
+        <p>푸르르르르르르르르~푸르르르르르르르</p>
+    </footer>
+
+</body>
+</html>

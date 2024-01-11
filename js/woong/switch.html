@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>switch - coffee</title>
+</head>
+<body>
+    <script>
+
+        var select = Math.floor(Math.random()*3);
+        var totPrice;
+        var coffees = ["아메리카노","아프리카노","아시아노"];
+        var count = Math.floor(Math.random()*10+1);
+
+
+        switch(coffees[select]){
+            case "아메리카노":
+                totPrice = 2000 * count;
+                select = 0;
+                break;
+
+            case "아프리카노":
+                totPrice = 3000 * count;
+                select = 1;
+                break;
+            case "아시아노":
+                totPrice = 4000 * count;
+                select = 2;
+                break;
+        }
+        e3
+        document.write(
+              "<p> 커피 종류 : "+coffees[select]+" </p>"
+            + "<p> 잔 수 : "+count+" </p>"
+            + "<p> "+coffees[select]+" "+count+"잔 : "+totPrice+"원</p>"
+        );  
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subject</title>
+    <style> 
+        .title{
+            display: flex;
+            width: max-content;
+            background-color: #000;
+            color: #fff;
+            font-weight: 600;
+        
+        }
+        .stud{
+            display: flex;
+            color: #000;
+        }
+        .title>div,.stud>div{
+            width: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+            border: 1px solid #fff;
+        }
+    
+    
+        .수{
+            width: max-content;
+            background-color: rgba(231, 97, 97, 0.7);
+        }
+        .우{
+            width: max-content;
+            background-color: rgba(238, 168, 62, 0.7);
+        }
+        .미{
+            width: max-content;
+            background-color: rgba(200, 238, 62, 0.7);
+        }
+        .양{
+            width: max-content;
+            background-color: rgba(62, 238, 106, 0.7);
+        }
+        .가{
+            width: max-content;
+            background-color: rgba(62, 65, 238, 0.7);
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        
+        var studs = [
+        {   name : "현빈",
+            gender : "남자",
+            type : "일반",
+            ban : 1,
+            math : 65,
+            kor : 67,
+            eng : 69,
+            spec : -1,
+            rank : 1,
+            avg : 0,
+            tot : 0,
+        },
+        {   name : "김우빈",
+            gender : "여자",
+            type : "일반",
+            ban : 2,
+            math : 75,
+            kor : 77,
+            eng : 79,
+            spec : -1,
+            rank : 1,
+            avg : 0,
+            tot : 0,
+        }
+        ,
+        {   name : "둘리",
+            type : "일반",
+            gender : "남자",
+            ban : 1,
+            math : 85,
+            kor : 87,
+            eng : 89,
+            spec : -1,
+            rank : 1,
+            avg : 0,
+            tot : 0,
+        }
+        ,
+        {   name : "또치",
+            type : "일반",
+            gender : "남자",
+            ban : 1,
+            math : 95,
+            kor : 97,
+            eng : 99,
+            spec : -1,
+            rank : 1,
+            avg : 0,
+            tot : 0,
+        }
+        ,
+        {   "name" : "망치",
+            "type" : "일반",
+            gender : "여자",
+            ban : 1,
+            "math" : 45,
+            "kor" : 47,
+            eng : 49,
+            spec : 40,
+            rank : 1,
+            avg : 0,
+            tot : 0,
+        }
+        ,
+        {   name : "마이콜",
+            type : "일반",
+            gender : "여자",
+            ban : 1,
+            math : 55,
+            kor : 47,
+            eng : 59,
+            spec : 70,
+            rank : 1,
+            avg : 0,
+            tot : 0,
+        }
+        ,
+        {   name : "너의콜",
+            type : "일반",
+            gender : "여자",
+            ban : 2,
+            math : 45,
+            kor : 67,
+            eng : 69,
+            spec : 80,
+            rank : 1,
+            avg : 0,
+            tot : 0,
+        }
+        ,
+        {   name : "망아지",
+            type : "일반",
+            gender : "남자",
+            ban : 2,
+            math : 45,
+            kor : 97,
+            eng : 99,
+            spec : 90,
+            rank : 1,
+            avg : 0,
+            tot : 0,
+        }
+        ,
+        {   name : "망아지",
+            type : "일반",
+            gender : "남자",
+            ban : 2,
+            math : 75,
+            kor : 97,
+            eng : 99,
+            spec : 90,
+            rank : 1,
+            avg : 0,
+            tot : 0,
+        }
+    ];
+
+
+        var grade = ["","가","가","가","가","가","양","미","우","수","수"];
+
+        for (const stud of studs) {
+            if(stud.spec != -1){
+                stud.type = "직장인";
+                stud.tot = stud.kor + stud.eng + stud.math + stud.spec;
+                stud.avg = stud.kor*0.2 + stud.eng*0.15 + stud.math*0.05 + stud.spec * 0.6;    
+            }else{
+                stud.tot = stud.kor + stud.eng + stud.math;
+                stud.avg = stud.tot/3;  
+            }
+        }
+
+        for (const me of studs) {
+            for (const you of studs) {
+                if(me.avg< you.avg){
+                    me.rank++;
+                }
+            }
+        }
+
+        // 출력부
+        studs.sort((me,you)=>{
+            var comp = me.ban == you.ban ? 0 : me.ban > you.ban ? 1 : -1;
+
+            if(comp == 0){
+                comp = me.gender == you.gender ? 0 : me.gender > you.gender ? 1 : -1;
+            }
+
+            if(comp == 0){
+                comp = me.avg == you.avg ? 0 : me.avg < you.avg ? 1 : -1;
+            }
+
+            if(comp == 0){
+                comp = me.name == you.name ? 0 : me.name > you.name ? 1 : -1;
+            }
+                
+            return comp;
+        });
+        
+        document.write(`
+        <div class="title">
+            <div>반</div>
+            <div>성별</div>
+            <div>이름</div>
+            <div>국어</div>
+            <div>영어</div>
+            <div>수학</div>
+            <div>특기</div>
+            <div>총점</div>
+            <div>평점</div>
+            <div>등급</div>
+            <div>등수</div>
+        </div>`);
+        
+       /*반, 성별, 이름, 국어, 영어, 수학 , 총점, 평균, 등급, 등수 */
+        for (const stud of studs) {
+           document.write(
+            `<div class="${grade[parseInt(stud.avg/10)]} stud">
+                <div>${stud.ban}</div>
+                <div>${stud.gender}</div>
+                <div>${stud.name}</div>
+                <div>${stud.kor}</div>
+                <div>${stud.eng}</div>
+                <div>${stud.math}</div>
+                <div>${stud.spec == -1 ? "X": stud.spec}</div>
+                <div>${stud.tot}</div>
+                <div>${stud.avg}</div>
+                <div>${grade[parseInt(stud.avg/10)]}</div>
+                <div>${stud.rank}</div>
+            </div>`
+           );
+        }
+        
+
+        
+    </script>
+    
+
+</body>
+</html>

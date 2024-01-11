@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>array</title>
+</head>
+<body>
+    <h1>array</h1>
+    <script>
+        //배열 생성
+        var arr = [33,66,55,88,33,55,22,44,55,66]
+        document.write(arr+"<br/>")
+        //원소호출
+        document.write(arr[2]+"<br/>")
+        //길이
+        document.write(arr.length+"<br/>")
+        //대입, 추가
+        arr[5] = 5678
+        document.write(arr+"<br/>")
+        arr[10] = 99
+        document.write(arr+"<br/>")
+        arr[15] = 777
+        document.write(arr+"<br/>")
+        //삭제
+        delete arr[2] 
+        //원소의 값만 삭제됨 : 원소 칸은 없는 값으로 존재함 , 배열이 줄어들지 않음
+
+        document.write(arr+"<br/>")
+        document.write(arr[2]+"<br/>") //undefined
+
+        //함수
+        //추가
+        arr.push(22)//뒤에 추가
+        document.write(arr+"<br/>")
+        arr.unshift(44) //앞에 추가
+        document.write(arr+"<br/>")
+        //제거
+        var vv = arr.pop() //뒤 제거
+        document.write(arr+"<br/>")
+        document.write(vv+"<br/>")
+        vv = arr.shift() //앞 제거
+        document.write(arr+"<br/>")
+        document.write(vv+"<br/>")
+
+        //중간처리
+        arr.splice(4,0,  100,200,300)   //중간 삽입
+        //       시작위치, 삭제갯수,  추가 원소들...
+        document.write(arr+"<br/>")
+        VV = arr.splice(10,7)       //중간 삭제
+        //       시작위치, 삭제갯수,
+        //VV 리턴은 삭제된 원소들의 배열
+        document.write(arr+"<br/>")
+        document.write(VV+"<br/>")
+
+        //검색
+        vv = 143
+        //배열인지 
+        document.write(Array.isArray(arr) +"<br/>")
+        document.write(Array.isArray(vv) +"<br/>")
+        //원소 존재유무 
+        document.write(arr.includes(33) +"<br/>")
+        document.write(arr.includes(98765) +"<br/>")
+        //원소 번호 찾기
+        document.write(arr.indexOf(33) +"<br/>")
+        document.write(arr.indexOf(98765) +"<br/>") //없으면 -1
+        document.write(arr.indexOf(33,5) +"<br/>")
+                            //찾을값, 시작위치  
+        //뒤에서부터 원소번호 찾기
+        document.write(arr.lastIndexOf(33) +"<br/>")
+        document.write(arr.lastIndexOf(98765) +"<br/>") //없으면 -1
+        document.write(arr.lastIndexOf(33,5) +"<br/>")
+                            //찾을값, 시작위치
+                            
+        
+                            
+        
+        //배열 <-> 배열
+        var arr2 = new Array(23,45,67)
+        vv = arr + arr2 //배열을 문자열로 결합
+        document.write(vv +"<br/>")
+        document.write(vv[12] +"<br/>")
+        vv = arr.concat(arr2)  //배열 합치기
+        document.write(vv +"<br/>")
+        document.write(vv[12] +"<br/>")
+        var arr3 = arr.slice(4,8)   //배열 일부 추출
+                    //    시작, 끝번호 +1
+        document.write(arr +"<br/>")
+        document.write(arr3 +"<br/>")
+
+        arr3 = arr.slice(5)   //배열 일부 추출
+                    // 시작 ~ 끝까지
+        document.write(arr +"<br/>")
+        document.write(arr3 +"<br/>")
+
+        //배열 <-> 문자열
+        vv = "정우성,정남성,정중성,북두신성_남한산성,감수성"
+        document.write(vv +"<br/>")
+        document.write(vv[5] +"<br/>")  //문자열은 배열
+        arr2 = vv.split(",")
+        document.write(arr2 +"<br/>")
+        document.write(arr2[0] +"<br/>")
+        document.write(arr2[3] +"<br/>")
+        arr3 = ["한가인","두가인","송가인"]
+        vv = arr3.join("@")
+        document.write(arr3 +"<br/>")
+        document.write(vv +"<br/>")
+
+
+        ///정렬
+        document.write(arr +"<br/>")
+        arr.reverse()
+        document.write(arr +"<br/>")
+        arr.sort()
+        document.write(arr +"<br/>")
+        arr2 = [34,9,12,67,11223,98,54,8,34,67,78]
+        document.write(arr2 +"<br/>")
+        arr2.sort()  //문자열 기준으로 정렬
+        document.write(arr2 +"<br/>")
+
+        ///기타
+        arr = [11,22,33,44,55,66,77, 88, 99]
+        //      0  1  2  3  4  5  6   7   8
+        document.write(arr +"<br/>")
+        arr.copyWithin(2,5,7)
+        /* 
+        11,22,33,44,55,66,77,88,99
+         0  1  2  3  4  5 6   7   8 
+                       |---|
+         
+            2번 위치로 붙여넣기 :: > 2번위치의 기존 내용 덮어쓰기
+              ↓           
+        11,22,66,77,55,66,77,88,99
+              |---| 
+        
+        */
+        document.write(arr +"<br/>")
+        arr.fill("나는무너",3,7)
+        // 채울데이터 ,  시작, 끝+1
+        document.write(arr +"<br/>")
+    </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+</head>
+<body>
+  
+
+    <script>
+
+    var date = new Date();
+    var nowMonth = date.getMonth()+1;
+    var nowDate = date.getDate();
+
+        for (var i = 1; i <= 12; i++) {
+            date.setMonth(i-1);
+            date.setDate(1);
+            document.write('<div style="margin-right: 5px;">'+
+            '<table border="" cellpadding="5px" cellspacing="0px" >'
+                +'<tr>'
+
+                +'<td colspan="7">'
+                    +`<img src="../../pictures/${i}.jpg" width="200px" alt="">`
+                +'</td>'
+            +'</tr>'
+            +'<tr>'
+                +'<td colspan="7" align="center">'
+                    +'<h2>2024년'+i+'월</h2>'
+               +'</td>'
+            +'</tr>'
+            +'<tr align="center">'
+                +'<td>일</td>'
+                +'<td>월</td>'
+                +'<td>화</td>'
+                +'<td>수</td>'
+                +'<td>목</td>'
+                +'<td>금</td>'
+                +'<td>토</td>'
+            +'</tr>'
+            +'<tr>');
+            
+            
+            
+            date.setMonth(i);
+            date.setDate(0);
+            var lastDay = date.getDate();
+            console.log("LastDay : "+lastDay);
+            date.setDate(1);
+            for (var index = 0; index < date.getDay(); index++) {
+                document.write("<td></td>")  
+            }
+
+            for (var j = 1; j <= lastDay; j++) {
+
+                date.setDate(j);
+                if(nowDate == j && nowMonth == i){
+                    document.write('<td align="center" style="background-color: yellow;">'+j+'</td>');
+                }else{
+                    document.write('<td align="center">'+j+'</td>');
+                }
+
+    
+                if(date.getDay()== 6){
+                    document.write('</tr>');
+                    document.write('<tr align="center">');
+                }
+                
+
+            }
+
+            document.write('</tr></tbody></table>');    
+        }
+        
+    </script>
+
+
+
+
+</body>
+</html>

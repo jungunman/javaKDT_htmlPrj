@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>국어 영어 수학 1</title>
+    <style>
+        
+
+        
+        .grade10, .grade9{
+            color: red;
+        }
+
+        .grade8{
+            color: blue;
+        }
+
+        .grade7{
+            color: yellow;
+        }
+
+        .grade6{
+            color: green;
+        }
+        .grade5,.grade4,.grade3,.grade2,.grade1{
+            color: pink;
+        }
+
+
+       
+    </style>
+</head>
+<body>
+    <script>
+        var kor =90;
+        var math = 97;
+        var eng = 87;
+        var name = "장동건";
+        var grade = Math.floor(((eng+math+kor)/3)/10);
+        var gradeStr = ["","가","가","가","가","가","양","미","우","수","수"];
+        var gyun = "";
+        
+        if((kor >= 80 && eng >= 80 && math >= 80) && (kor < 90 && eng < 90 && math < 90)){
+            gyun = "(균등)"
+        }
+        
+
+        document.write("<h1 class=grade"+grade+">이름 : "+name+"</h1>");
+        document.write("<p>국어 : "+kor+"</p>");
+        document.write("<p>수학 : "+math+"</p>");
+        document.write("<p>영어 : "+eng+"</p>");
+        document.write("<p class=grade"+grade+">총점 : "+(eng+math+kor)+"</p>");
+        document.write("<p>평균 : "+Math.floor((eng+math+kor)/3)+"</p>");
+        document.write("<p>등급 : "+gradeStr[grade]+gyun+"</p>");
+    </script>
+</body>
+</html>

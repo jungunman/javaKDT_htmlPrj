@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>board</title>
+    <style>
+        #con{
+            width:800px;
+            border: 1px solid #000;
+        }
+
+        #con > div{
+            width:700px;
+            height: 30px;
+            margin: 5px;
+            
+            clear: both;
+        }
+
+        #con > div > div{
+            width:500px;
+            height: 30px;
+            padding-left: 20px;
+            line-height: 30px;
+            border: 1px solid #888;
+            float: left;
+        }
+
+        #con > div > button{
+            display: block;
+            float: right;
+            margin-right: 20px;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var con = document.getElementById("con")
+            var ttt = document.getElementById("ttt")
+            var btn = document.getElementById("btn")
+
+            btn.onclick = function(){
+                var vv = ttt.value
+                ttt.value = ""
+
+
+
+                
+                var box = document.createElement("div")
+
+
+                var content = document.createElement("div")
+                content.innerHTML = vv
+                box.appendChild(content)
+
+                var updateBtn = document.createElement("button");
+                updateBtn.innerHTML = "수정";
+                
+            
+                
+                let isUpdate = false;
+                
+                let updateInput = document.createElement("input");
+                updateBtn.onclick = ()=>{
+                    if(!isUpdate){
+                        updateInput.value = content.innerHTML;
+                        content.innerHTML = "";
+                        content.appendChild(updateInput);
+                        updateBtn.innerHTML = "완료";
+                        isUpdate= true;
+                    }else{
+                        updateBtn.innerHTML = "수정";
+                        content.innerHTML = updateInput.value;
+                        updateInput.remove();
+                        updateBtn.innerHTML = "수정";
+                        isUpdate= false;
+                    }
+
+                }
+
+                
+                
+
+                
+
+
+                var delBtn = document.createElement("button")
+                delBtn.innerHTML = "삭제"
+                delBtn.onclick = function(){
+                    //box.remove()
+                    this.parentNode.remove() //둘다 상관없음
+                }
+
+                box.appendChild(delBtn)
+                box.appendChild(updateBtn);
+                con.appendChild(box)
+
+
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>board</h1>
+    <input type="text" id="ttt"/>
+    <input type="button" id="btn" value="추가"/>
+    <div id="con"></div>
+</body>
+</html>

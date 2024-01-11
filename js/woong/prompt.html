@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt</title>
+</head>
+<body>
+    
+    <script>
+        var mul = 1;
+        var sum = 0;
+
+        while(true){
+            var tmp = prompt(); 
+            if(tmp == null){
+                continue;
+            }
+
+            if(tmp%2 == 0 ){
+               sum += Number(tmp);
+            }
+            if(tmp%3 == 0){
+                
+                mul *=  Number(tmp);
+            }
+            
+            
+            if(tmp == 'x'){
+                break;
+            }
+        }
+        console.log(`sum = ${sum}`);
+        console.log(`mul = ${mul}`);
+
+    </script>
+
+</body>
+</html>

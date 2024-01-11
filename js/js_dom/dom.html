@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom</title>
+    <style>
+        #cons{
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
+
+    <script src="../link/ddd.js"></script> <!-- js 파일 가져오기 -->
+    <script>
+        window.onload=function(){
+
+            function fn_2(){
+                alert("fn_3() 실행")
+            }
+
+            function log(msg){
+                let cons = document.getElementById("cons")
+                cons.innerHTML += msg+"<br/>"
+            }
+
+            var roott = document.documentElement //문서 최상위(모든 객체 가져오기)
+            console.log(roott)
+            //log(roott)
+            log("------------------roott child")
+
+
+            //자식을 가져오기
+            var rootChilds = roott.childNodes
+            for (const i in rootChilds) {
+                log(i+" : "+rootChilds[i])
+            }
+
+            var spans = document.getElementsByTagName("span")
+            log("spans : "+spans)
+            log("spans[0] : "+spans[0]+" : "+spans[0].innerHTML+" , "+spans[0].getAttribute("zz-data"))
+            var bbbs = document.getElementsByClassName("bbb")
+            bbbs[0].innerHTML = "비비비영<div zz-data='1111' id='xx'>아기상어</div>"
+            bbbs[2].innerHTML = "비비비투"
+            bbbs[3].innerText = "<div>나는무너</div>"
+            //innerHTML : 내용이 태그일 경우 element로 처리
+            //innerText : 내요을 모두 문자열로 처리
+            bbbs[3].setAttribute("zz-data",9876)
+            bbbs[1].removeAttribute("qwer")
+
+            var newItem = document.createElement("div")
+            newItem.innerHTML = "새로운 div"
+            bbbs[2].appendChild(newItem)
+
+            log("bbbs.length : "+bbbs.length)
+            for (let i = 0; i < bbbs.length; i++) {
+                log("bbbs["+i+"] : "+bbbs[i].tagName+"=>"+bbbs[i].innerHTML)
+            }
+
+            var xx = document.getElementById("xx")
+            xx.innerHTML = "엄마상어"
+            log("xx : "+xx.innerHTML)
+
+            //자신을 삭제
+            spans[3].remove()
+
+            var aaa = document.getElementsByClassName("aaa")[0]
+
+            //자식을 삭제
+            aaa.removeChild(document.getElementById("q1"))
+            
+            var q2 = document.getElementById("q2")
+            log("q2:"+q2.innerHTML)
+            //부모노드
+            var par = q2.parentNode
+            log("par:"+par.getAttribute("zz-data"))
+            //자식노드들
+            var childs = q2.childNodes
+            log("childs.length:"+childs.length)
+            log("childs[0]:"+childs[0].getAttribute("zz-data"))
+            log("childs[1]:"+childs[1])
+
+
+            var preBro = q2.previousSibling  //이전 형제 노드
+            log("preBro:"+preBro.getAttribute("zz-data"))
+            var nextBro = q2.nextSibling  //다음 형제 노드
+            log("nextBro:"+nextBro.innerHTML)
+
+
+            q2.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.remove()
+        }
+
+        function fn_1(){
+            alert("fn_1() 실행")
+        }
+        function fn_3(){
+            alert("fn_3() 실행")
+        }
+
+        //box2를 삭제하세요
+    </script>
+</head>
+<body>
+    <h1>dom</h1>
+    <div class="aaa">
+        aaa0
+        <div class="bbb" id="b1">bbb0</div>
+        <div qwer="11" id="q1">qwer11</div>
+        <div qwer="22"  class="bbb" >qwer22 bbb1</div>
+        <span  zz-data="1234">span0</span>
+        <span>span1</span>
+    </div>
+
+    <div zz-data="부모지롱">
+        <div class="bbb">bbb2</div>
+        <div>box1</div>
+        <div>box2</div>
+        <div>box3</div>
+        <div qwer="33" zz-data="5678">qwer33</div><div qwer="44" id="q2"><div zz-data="난 자식이지"></div>qwer44</div><span class="bbb">span2</span>
+        <span>span3</span>
+    </div>
+    
+    <a href="javascript:fn_1()">fn_1</a>
+    <a href="javascript:fn_2()">fn_2</a>
+    <a href="javascript:fn_4()">fn_4</a>
+
+    <div id="cons"></div>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pacMan</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        section{
+            position: relative;
+            width: 600px;
+            height: 400px;
+            border: 1px solid #888;
+            margin: auto;
+        }
+        .enermy{
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: #0f0;
+            
+        }
+        #me{
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: #fa0;
+            
+        }
+    </style>
+    <script>
+        window.onload=function(){
+
+            playChk = true
+
+            me = document.getElementById("me")
+            me.xx = 400
+            me.yy = 200
+            me.style.left = me.xx+"px"
+            me.style.top = me.yy+"px"
+
+            enermy = document.getElementsByClassName("enermy");
+            for (let i = 1; i <= enermy.length; i++) {
+                enermy[i-1].xx = Math.random()*70*i;
+                enermy[i-1].yy = Math.random()*70*i;
+                let moving = Math.random()*3+1;
+                enermy[i-1].xDir = moving
+                enermy[i-1].yDir = moving
+                enermy[i-1].style.left = enermy[i-1].xx+"px"
+                enermy[i-1].style.top = enermy[i-1].yy+"px"
+            }
+            //일단은 33인데
+            
+
+            function enermyMove(){
+                for (let i = 1; i <= enermy.length; i++) {
+                    let ren =  Math.random()*3-1;
+                if(enermy[i-1].xx>600-50 || enermy[i-1].xx < 0){ 
+                    enermy[i-1].xDir *= (ren>= 1?1 :ren<= -1 ? -1: 0);
+                }
+                if(enermy[i-1].yy>400-50 || enermy[i-1].yy < 0){ 
+                    enermy[i-1].yDir *= (ren>= 1?1 : ren<= -1 ? -1: 0);
+                }
+                    
+                if(i%2 == 1){
+                    enermy[i-1].xx += enermy[i-1].xDir
+                    enermy[i-1].yy += enermy[i-1].yDir
+                }else{
+                    enermy[i-1].xx -= enermy[i-1].xDir
+                    enermy[i-1].yy -= enermy[i-1].yDir
+                }
+
+                enermy[i-1].style.left = enermy[i-1].xx+"px"
+                enermy[i-1].style.top = enermy[i-1].yy+"px"
+            }
+                touch()
+            }
+            //enermyMove()
+
+            gogo = setInterval(enermyMove, 20)
+
+        }
+        window.onkeydown=function(e){
+            //console.log("나야:"+e.keyCode)
+            switch(e.keyCode){
+                case 38: //위
+                me.yy -= 5
+                break
+                case 40: //아래
+                me.yy += 5
+                break
+                case 37: //좌
+                me.xx -= 5
+                break
+                case 39: //우
+                me.xx += 5
+                break
+            }
+
+            if(me.xx<0){ me.xx = 0}
+            if(me.xx>600-50){ me.xx = 600-50}
+            if(me.yy<0){ me.yy = 0}
+            if(me.yy>400-50){ me.yy = 400-50}
+
+            if(playChk){
+                me.style.left = me.xx+"px"
+                me.style.top = me.yy+"px"
+            }
+
+            //touch()
+
+        }
+
+        function touch(){
+            for (let i = 1; i <= enermy.length; i++) {
+                if( me.xx < enermy[i-1].xx+50 &&
+                    me.xx+50 > enermy[i-1].xx    && 
+                    me.yy < enermy[i-1].yy+50 &&
+                    me.yy+50 > enermy[i-1].yy
+                ){
+                    console.log("touch:")
+
+                    playChk = false
+                    clearInterval(gogo)
+                    alert("게임오버")
+                }
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <h1>pacMan</h1>
+    <section>
+        <div class="enermy"></div>
+        <div class="enermy"></div>
+        <div class="enermy"></div>
+        <div class="enermy"></div>
+        <div class="enermy"></div>
+        <div id="me"></div>
+    </section>
+</body>
+</html>

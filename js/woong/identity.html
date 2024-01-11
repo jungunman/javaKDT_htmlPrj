@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주민 번호</title>
+</head>
+<body>
+    <p>950530-1011322</p>
+
+
+    <script>
+        let body = document.querySelector("body");
+        let id = document.querySelector("p").innerHTML;
+        
+        id = id.split("-");
+        let gender = ["여","남"];
+
+       let info = `${parseInt((Number(id[1].charAt(0))-1)%4/2+19)+id[0].substring(0,2)}년 ${id[0].substring(2,4)}월 ${id[0].substring(4,6)}일 성별( ${gender[parseInt(id[1].charAt(0)%2)]} ) 국적 ( ${Number(id[1].charAt(0)) > 4 ? "외국인":"내국인"} )`
+
+        body.innerHTML += `<h2>${info}</h2>`
+    </script>
+</body>
+</html>

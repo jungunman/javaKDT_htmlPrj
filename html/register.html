@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+
+    <style>
+        *{
+         margin: 0;
+         padding: 0;
+         width: 500px;
+         box-sizing: border-box;
+        }
+        div> h1{
+            background-color: rgba(0, 0, 0, 0.6);
+            text-align: center;
+            color: #fff ;
+        }
+
+        div>h1:hover{
+            color: rgba(0, 250, 0, 0.6);
+        }
+
+        form>div{
+            margin-top: 10px;
+            width: 100%;
+        }
+        form>div>input{
+            padding:10px;
+        }
+        form>div:nth-child(3){
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        form>div>label{
+            width: 10px;
+        }
+        form>div:nth-child(3)>input{
+            width: 30px;
+        }
+
+    </style>
+</head>
+<body>
+        <div>
+            <h1>MEMBERS LOGIN</h1>
+        </div>
+
+        <form action="#" >
+            <div >
+                <input type="text" maxlength="20" placeholder="아아디">
+            </div>
+
+            <div style="width: inherit; margin-top: 5px;">
+                <input type="text" maxlength="20" placeholder="비밀번호" >
+            </div>
+
+            <div>
+                <input id = "auto" type="checkbox">
+                <label for="auto">AUTO</label>
+                
+            </div>
+            <div>
+                <input type="submit" value="LOGIN">
+            </div>
+        </form>
+        <div >
+            <form action="#" >
+                <input type="submit" value="ENTRY" >
+            </form>
+            <form action="#">
+                <input type="submit" value="ENTRY">
+            </form>
+        </div>
+
+</body>
+</html>

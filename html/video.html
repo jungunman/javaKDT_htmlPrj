@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        header {
+            width: 100%;
+            position:fixed;
+            top: 0;
+            z-index: 999;
+        }
+        header > div{
+            width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            
+
+        }
+        header > div > h1{
+            width: 80px;
+        }
+        header > div > h1 > img {
+            width: 100%;
+        }
+        header > div > nav {
+            width: 80%;
+        }
+        header > div > nav > ul {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+        header > div > nav > ul > li {
+            color: #fff;
+            font-weight: 700;
+            text-shadow: 2px 2px #000;
+        }
+
+        .banner {
+            width: 100%;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+        .banner > video {
+            width: 1280px;
+            max-height: 720px;
+            object-fit: cover;
+            object-position: center;
+
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div >
+
+            <h1><img src="#"></h1>
+            <nav>
+                <ul>
+                    <li>메뉴1</li>
+                    <li>메뉴2</li>
+                    <li>메뉴3</li>
+                    <li>메뉴4</li>
+                    <li>메뉴5</li>
+                </ul>
+            </nav>
+        </div>
+        
+    </header>
+    <div class="banner">
+        <video src="./fff/short_1280x720.mp4" autoplay muted loop></video>
+    </div>
+</body>
+</html>

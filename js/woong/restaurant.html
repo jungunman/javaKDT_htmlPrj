@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>슈의 레스토랑</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html{
+            width: 100%;
+            height: 100%;
+        }
+        body{
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .restaurant{
+            width: 50%;
+            height: 50%;
+            border: 1px solid #000;
+        }
+        .restaurant>.chefs{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .restaurant>.chefs>.chef{
+            margin : 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            border: 1px solid #000;
+        }
+        .getPlace{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .restaurant>.distribution{
+            margin-top: 20px;
+            width: 100%;
+            height: 20px;
+            border: 1px solid #000;   
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .restaurant>.distribution>p{
+            width: 100px;
+            padding: 5px;
+            color: white;
+            background-color: rgba(10, 10, 10, 0.8);
+        }
+
+        .guests{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .guest{
+            margin-top: 5px;
+            width: 50px;
+            padding: 5px;
+            border: 1px solid #000;
+        }
+    </style>
+
+</head>
+<body>
+    
+        <div class="restaurant">
+            <div class="chefs">
+                <div class="chef">강해상</div>
+                <div class="chef">그이상</div>
+                <div class="chef">푸린</div>
+                <div class="chef">테두우리</div>
+                <div class="chef">차두우리</div>
+            </div>
+
+            <div class="distribution">
+                <p>배식구</p>
+            </div>
+            <div class="getPlace">
+                &nbsp;
+            </div>
+
+            <div class="guests">
+                <div class="guest">손님 1</div>
+                <div class="guest">손님 2</div>
+                <div class="guest">손님 3</div>
+                <div class="guest">손님 4</div>
+                <div class="guest">손님 5</div>
+            </div>
+        </div>
+    <script>
+        let chefs = document.querySelectorAll(".chef");
+        
+        
+    </script>
+</body>
+</html>

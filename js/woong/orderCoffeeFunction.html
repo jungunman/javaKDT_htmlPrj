@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오더 내려잇</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .bill{
+            width: 400px;
+            height: 300px;
+            margin: 75px auto;
+            border: 1px solid #000;
+        }
+
+        .bill>h1{
+            font-size: 18px;
+            border-bottom: 1px solid #000;
+            text-align: center;
+            padding: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <script>
+
+        // var name = prompt("무엇을 주문하시겠습니까?");
+        // var ea = Number(prompt("몇 잔 주문하겠습니까?"));
+
+        // order({coffee: name, cnt : ea});
+        order();
+        order({coffee:"아시아노"});
+
+        function order({coffee,cnt} = {coffee:"아메리카노", cnt:1}){
+            var info = {
+                아메리카노 : 1800,
+                아시아노 : 2100,
+                아프리카노 : 2200
+            }
+            
+            if(info[coffee] == undefined || cnt == undefined){
+                coffee = "아메리카노";
+                cnt = 1;
+            }
+
+            document.write(`
+                <div class="bill">
+                    <h1>그린 킹신협 카페</h2>
+                    <h3>상품명 ${coffee} (${cnt}잔) 나왔습니다.</h3>
+                    <p>${info[coffee] * cnt}원 결제 도와드릴게요.</p>
+                    <p>승인 번호 : W${parseInt(Math.random()*10000+5000) + "" + parseInt(Math.random()*1000000)}</p>    
+                </div>
+            `);
+            
+
+            
+            
+        }
+
+
+    </script>
+</body>
+</html>

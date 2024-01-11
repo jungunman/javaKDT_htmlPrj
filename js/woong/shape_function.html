@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .cir,.rec,.tri{
+            background-color: red;
+            border-radius: 50%;
+            color: white;
+            text-align: center;
+        }
+
+        .rec{
+            border-radius: 0%;
+            background-color: blue;
+        }
+
+        .tri{
+            border-radius: 0%;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    
+    <script>
+        circle(200);
+        rectangle(100,300);
+        triangle(300,400,200);
+
+
+        function circle(r){
+            document.write(`
+            <div class="cir" style="width:${r}px; height:${r}px">
+                <h1>원</h2>
+                <h2> 둘레 : ${parseInt(r*Math.PI/2)} </h2>
+                <h2> 넓이 : ${parseInt(r*r*Math.PI)} </h2>
+            </div>
+            `);
+        }
+
+        function rectangle(w, h){
+            document.write(`
+            <div class="rec" style="width:${w}px; height:${h}px">
+                <h1>직사각형</h2>
+                <h2> 둘레 : ${(w+h)*2} </h2>
+                <h2> 넓이 : ${w*h} </h2>
+            </div>
+            `);
+        }
+
+        function triangle(w, h, s){
+            document.write(`
+            <div class="tri" style="width:${w}px; height:${h}px; border-left:calc(${w}/2)px solid #fff;">
+                <h1>삼각형</h2>
+                <h2> 둘레 : ${w+h+s} </h2>
+                <h2> 넓이 : ${w*h/2} </h2>
+            </div>
+            `);
+        }
+    </script>
+
+
+
+</body>
+</html>

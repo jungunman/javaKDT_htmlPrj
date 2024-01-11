@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prototype</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        .student{
+            display: flex;
+            width: 500px;
+            align-items: center;
+            justify-content: space-between;
+        }
+    </style>
+    <script src="../jquery-3.7.1.min.js"></script>
+    <script>
+
+        //prototype 정의
+        //prototype이름 = 생성자(매개변수)
+        Student = function(name, ...jum){
+            this.name = name;
+            this.jum = jum;
+            this.setType();
+            this.avg = null;
+            this.tot = null;
+            this.rank = 1;
+            this.calc();
+            
+        }
+
+
+        Student.prototype = {
+            calc : function(){
+                for (const j of this.jum) {
+                    this.tot += j;
+                }
+
+                if(this.kind == "일반"){
+                    this.avg = parseInt(this.tot/this.jum.length);
+                }else{
+                    let multiple = [0.2,0.15,0.05,0.6];
+                    this.jum.forEach((jumsu,i) => {
+                        this.avg += parseInt(jumsu*multiple[i]);
+                    });
+                }
+            },
+            setType : function(){
+                this.kind = this.jum.length ==3 ? "일반" : "예체능"; 
+            },
+            toString : function(){
+                return `학생 정보 :${this.kind}, ${this.name}, ${this.jum}, ${this.tot}, ${parseInt(this.avg)}, ${this.rank}`;
+            }
+        }
+
+
+        $(function(){
+            let studs = [new Student("펑펑펑",30,20,10,25), new Student("푸푸푸",32,26,99,66),new Student("키키키",87,52,22,63),new Student("머머머",11,22,33),new Student("대가뤼",45,67,89),new Student("못말류",45,67,66,89),new Student("구닥다리",45,12,67,89),new Student("시진핑",45,67,89),new Student("세라핌",45,67,89),new Student("푸푸푸",22,45,67,89),new Student("응유옌",45,67,89)]
+            
+            studs.sort((me, you)=>{
+                let res = me.kind > you.kind ? 1: me.kind == you.kind ? 0 : -1;
+
+                if(res == 0){
+                    res = me.avg < you.avg ? 1: me.avg == you.avg ? 0 : -1;
+                }
+                if(res == 0){
+                    res = me.name > you.name ? 1:  me.name == you.name ? 0 : -1;
+                }
+                return res
+            })
+
+            for (const me of studs) {
+                for (const you of studs) {
+                    if(me.avg < you.avg){
+                        me.rank++;
+                    }
+                }
+            }
+
+            for (const stud of studs) {
+                
+                $(`section`).append(`<div class="student">
+                    <p>${stud.kind}</p>
+                    <p>${stud.name}</p>
+                    <p>${stud.jum[0]}</p>
+                    <p>${stud.jum[1]}</p>
+                    <p>${stud.jum[2]}</p>
+                    <p>${stud.jum[3] == undefined ? "X" : stud.jum[3]}</p>
+                    <p>${stud.tot}</p>
+                    <p>${stud.avg}</p>
+                    <p>${stud.rank}</p>
+                </div>`);
+            }
+            
+        })
+    </script>
+</head>
+<body>
+    <h1>prototype</h1>
+    <section>
+
+    </section>
+</body>
+</html>

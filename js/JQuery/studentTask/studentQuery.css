@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.inputBox{
+    width: 800px;
+    padding: 10px;
+    border-bottom: 3px solid #000;
+}
+
+.inputBox>input{
+    padding: 5px;
+}
+
+.subtitle{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding : 10px;
+    width: 800px;
+    border-bottom: 1px solid #000;
+}
+.subtitle>h3{
+    margin-right: 50px;
+}
+
+.student{
+    width: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding :10px;
+}
+
+.student>p{
+    margin-right: 60px;
+}

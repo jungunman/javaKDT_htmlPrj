@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let origin = "aBCd EfG 그린 컴퓨터 green computer 123".split(" ");
+        let change = "";
+        for (let ori of origin) {
+            let first = ori.charAt(0).toUpperCase();
+            ori = ori.toLowerCase();
+            ori = first+ori.substring(1);
+            change+=ori+" ";
+        }
+        const body = document.querySelector("body");
+        body.innerHTML = `<h2>${change}</h2>`;
+
+    </script>
+</body>
+</html>

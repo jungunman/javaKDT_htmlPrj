@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>banner</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        img{
+            width: 200px;
+            height: 150px;
+            display: block;
+            float: left;
+        }
+        .big{
+            width: 200px;
+            height: 150px;
+            overflow: hidden;
+            margin: auto;
+            position: relative;
+        }
+        #box{
+            position: absolute;
+            width: 1600px;
+            height: 150px;
+            left: 0px;
+            transition-duration: 0.5s;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var x = 0
+
+            var box = document.getElementById("box")
+            
+
+            function gogo(){
+                x++
+                if(x>=8){
+                    x= 0
+                }
+                box.style.left = -200 * x +"px"
+                
+            }
+
+            //gogo()
+            setInterval(gogo, 2000)
+        }
+    </script>
+</head>
+<body>
+    <h1>banner</h1>
+    <div class="big">
+        <div id="box">
+            <img src="../fff/child_1.jpg" alt="">
+            <img src="../fff/child_2.jpg" alt="">
+            <img src="../fff/child_3.jpg" alt="">
+            <img src="../fff/child_4.jpg" alt="">
+            <img src="../fff/son_1.jpg" alt="">
+            <img src="../fff/son_2.jpg" alt="">
+            <img src="../fff/son_3.jpg" alt="">
+            <img src="../fff/son_4.jpg" alt="">
+        </div>
+    </div>
+
+</body>
+</html>

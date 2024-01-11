@@ -1,0 +1,6 @@
+
+$(()=>{
+    $(".registerBtn").css("color","green");
+    
+    
+})
