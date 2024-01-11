@@ -10,7 +10,6 @@
     <script src="../jquery-3.7.1.min.js"></script>
     <script>
         $(()=>{
-            console.log($(".balloons > .row"))
             $(".balloons > .row").eq(0).children().eq(0).on("click",function(){
                 $(".balloons > .row").eq(1).children().eq(0).css({backgroundColor : "orange"})
             })
@@ -23,8 +22,6 @@
             $(".balloons > .row").eq(0).children().eq(3).on("mouseup",function(){
                 $(".balloons > .row").eq(1).children().eq(3).css({ transform: "rotate(90deg)"})  
             })
-
-            
         })
 
     </script>

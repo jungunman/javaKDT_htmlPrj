@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>으아 늘어나라!!</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .list{
+        width: 50px;
+        height: 50px;
+        margin-bottom: 5px;
+        background-color: aqua;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .list > ul{
+        background-color: yellow;
+        list-style: none;
+    }
+    
+</style>
+<script src="../jquery-3.7.1.min.js"></script>
+<script>
+
+    let cate = {
+        빵 : "<ul><li>피자빵</li><li>오빵</li><li>어깨빵</li><li>죽빵</li></ul>",
+        피자 : "<ul><li>담배피자</li><li>일단피자</li><li>어깨피자</li><li>피자안에피자</li></ul>",
+        고개 : "<ul><li>스무고개</li><li>보릿고개</li><li>고래고개</li><li>소리고개</li></ul>",
+    }   
+
+    $(()=>{
+        let listDiv = $(`section > .list`);
+        listDiv.click(function(){
+            $(this).click(function(){
+                
+                for (const i in $(`section > .list`)) {
+                    $(`section > .list`).eq(i).stop(true,false).animate({width:"50px"},500)
+                                                    .animate({height:"50px"},500,function(){
+                                                        $(`section > .list`).eq(i).children().remove();
+                    })
+                }
+                $(this).stop().animate({width : "150px"},1000)
+                                .animate({height : "100px"},1000,"linear", function(){
+                    switch ( $(this).html()){
+                        case "빵":
+                            $(this).append(cate.빵);
+                            break;
+                        case "피자":
+                            $(this).append(cate.피자);
+                            break;
+                        case "고개":
+                            $(this).append(cate.고개);
+                            break;
+                        
+                    }
+                })
+
+               
+            })
+        })
+    });
+</script>
+
+<body>
+    <section>
+        <div class="list">빵</div>
+        <div class="list">피자</div>    
+        <div class="list">고개</div>
+    </section>
+</body>
+</html>

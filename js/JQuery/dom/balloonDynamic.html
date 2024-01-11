@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>balloon</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+
+        section {
+            width:800px;
+            
+            border: 3px double #888;
+        }
+        section > div{
+            width:180px;
+            height: 180px;
+            float: left;
+            margin: 5px;
+            padding:5px;
+        }
+        #con{
+            width:600px;
+            border: 1px solid #aaa;
+            margin: 5px;
+            
+        }
+
+        
+    </style>
+    <script src="../jquery-3.7.1.min.js"></script>
+    <script>
+        var arr = [
+            {en:"click",
+            action:{backgroundColor:"#fa0"}
+            },
+            {en:"mouseover",
+            action:{boxShadow:"10px 10px 20px #000"}
+            },
+            {en:"mouseout",
+            action:{opacity:"0.3"}
+            },
+            {en:"mouseup",
+            action:{transform:"rotate(90deg)"}
+            }
+            ,
+            {en:"mouseup",
+            action:{transform:"rotate(90deg)"}
+            },
+            {en:"mouseup",
+            action:{transform:"rotate(90deg)"}
+            },
+            {en:"mouseup",
+            action:{transform:"rotate(90deg)"}
+            }
+        ]
+        $(function(){
+            for (let i = 0; i < arr.length*2; i++) {
+               let box = $("<div></div>")
+               let img = $("<img>")
+               let outterBox = $("<div></div>")
+               let outterimg = $("<img>")
+               img.prop("src","../../img/balloon/"+(i+1)+".png")
+               
+               box.append(img)
+               $("section").append(box)
+
+               if(arr.length > i){
+                    box.on(arr[i].en,function(){
+                        $("section > div").eq(i+arr.length).css(arr[i].action)
+                    })
+                }
+            }
+
+            
+        })
+    </script>
+</head>
+<body>
+    <h1>balloon</h1>
+    <section/>
+</body>
+</html>
