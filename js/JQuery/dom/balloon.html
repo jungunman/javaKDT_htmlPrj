@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       
+    </style>
+    <script src="../jquery-3.7.1.min.js"></script>
+    <script>
+        $(()=>{
+            $(".balloons > .row").eq(0).children().eq(0).on("click",function(){
+                $(".balloons > .row").eq(1).children().eq(0).css({backgroundColor : "orange"})
+            })
+            $(".balloons > .row").eq(0).children().eq(1).on("mouseover",function(){
+                $(".balloons > .row").eq(1).children().eq(1).css({"box-shadow": "4px 3px 1px rgba(0, 0, 0, 0.6)"})
+            })
+            $(".balloons > .row").eq(0).children().eq(2).on("mouseout",function(){
+                $(".balloons > .row").eq(1).children().eq(2).css({opacity: "0.5"})  
+            })
+            $(".balloons > .row").eq(0).children().eq(3).on("mouseup",function(){
+                $(".balloons > .row").eq(1).children().eq(3).css({ transform: "rotate(90deg)"})  
+            })
+
+            console.log($(".balloons > .row").eq(0).children().eq(2))
+        })
+
+    </script>
+</head>
+<body>
+    <div class="balloons">
+        <div class="row">
+            <img src="../../img/balloon/01.png">
+            <img src="../../img/balloon/02.png">
+            <img src="../../img/balloon/03.png">
+            <img src="../../img/balloon/04.png">
+        </div>
+        <div class="row">
+            <img src="../../img/balloon/05.png">
+            <img src="../../img/balloon/06.png">
+            <img src="../../img/balloon/07.png">
+            <img src="../../img/balloon/08.png">
+        </div>
+    </div>
+
+</body>
+</html>
