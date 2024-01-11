@@ -37,7 +37,6 @@
     Category = function(category,superQueryTAG,menus){
         this.category = category;
         this.superQueryTAG = superQueryTAG;
-        this.isShowTitle =false;
         this.isShowSubTitle =false;
         this.isOpen = false;
         this.menus = menus;
@@ -47,43 +46,21 @@
     Category.prototype = {
         makeTitle : function(){
             this.outter = $(`<div><h2>${this.category}</h2></div>`);
-            this.outter.prop("class","categories");
-
-            this.superQueryTAG.siblings().append(this.outter);
+            this.superQueryTAG.children().eq(1).append(this.outter);
         },
         makeUl : function(){
             let ul = $(`<ul></ul>`);
             for (const menu of this.menus) {
                 ul.append(`<li>${menu}</li>`);
             }
-            $("section > div").append(ul);
+            $("nav > div").append(ul);
         },
-        showSubTitle : function(){
-            this.isShowSubTitle = !this.isShowSubTitle;
-            if(this.isShowSubTitle){
-                this.makeUl();
-            }else{
-                this.outter.children().remove();
-            }
+        removeSubTitle : function(){ 
+            this.outter.children().remove();
         },
-        showTitle : function(){
-            this.isShowTitle = !this.isShowTitle;
-            if(this.isShowTitle){
-                this.makeTitle();
-            }else{
-                this.outter.remove();
-            }
-        },
-        isOpen : function(){
-            this.isOpen = !this.isOpen;
-            if(this.isOpen){
-                this.makeForm();
-            }else{
-                this.superQueryTAG.children().remove();
-            }
-
-            return this.isOpen;
-        },
+        removeTitle : function(){
+            this.outter.remove();
+        }
     }
     let menus =[
         {menu : ["피자빵","아빵","오빵","죽빵","빵빵아!옥지얌!"]},
@@ -98,56 +75,81 @@
     $(()=>{
         //Category prototype생성
         $.each(menus, function(i, element){
-            categories.push(new Category(category[i],$(`section`),element.menu));
+            categories.push(new Category(category[i],$(`body`),element.menu));
         });
         //문열어 닫아!
         let isOpenTitle = false;
-        $("section").on("click",function(e){
-            let nav = $("<nav></nav>");
-            nav.css({backgroundColor:"rgb(221, 91, 16)",
-                    width:"90px",
-                    height:"40px"});
-            $("body").append(nav);
+        let nav = $("<nav></nav>");
+        $("section").after(nav);
+
+        $("section").on("click",function(){
             isOpenTitle = !isOpenTitle;
             if(isOpenTitle){
+                nav.css({backgroundColor:"rgb(221, 91, 16)",
+                        width:"90px",
+                        height:"40px"});
                 nav.stop(true,false).animate({
                     height : "150px",
                 },1000,"swing",function(){
                     for (const ca of categories) {
-                            ca.showTitle();
+                            ca.makeTitle();
                     }
+                    //subTitle 만들기
+                    let isOpenCategory = false;
+                    $("nav>div").on("click",function(){
+                        isOpenCategory = !isOpenCategory;
+                        if(isOpenCategory){
+                            console.log($("nav>div"))
+                            $(this).stop(true,false).animate({
+                                width : "450px"
+                            },1000,"swing",function(){
+                                for (const ca of categories) {
+                                        ca.makeUl();
+                                }
+                            });
+                        }else{
+                            for(const ca of categories) {
+                                ca.removeSubTitle();
+                            }
+                            $("nav>div>ul").stop(true,false).animate({
+                                width : "50px"
+                            },1000)
+                        }
+                    })
                 }) 
             }else{
                 for(const ca of categories) {
-                    ca.showTitle();
+                    ca.removeTitle();
                 }
-                $(this).stop(true,false).animate({
-                    height : "40px"
-                },1000)
+                $("nav").stop(true,false).animate({
+                    height : "0px"
+                },1000,"swing",function(){
+                    $("nav").remove();
+                })
             }
         })
 
-        let isOpenCategory = false;
-        $("section>div").on("click",function(e){
-            e.preventDefault();
-            isOpenCategory = !isOpenCategory;
-            if(isOpenCategory){
-                $(this).stop(true,false).animate({
-                    width : "150px"
-                },1000,"swing",function(){
-                    for (const ca of categories) {
-                            ca.makeUl();
-                    }
-                });
-            }else{
-                for(const ca of categories) {
-                    ca.showSubTitle();
-                }
-                $(this).stop(true,false).animate({
-                    width : "50px"
-                },1000)
-            }
-        })
+        // console.log($("nav>div"));
+        // $("nav").on("click",function(){
+            
+        //     isOpenCategory = !isOpenCategory;
+        //     if(isOpenCategory){
+        //         $(this).stop(true,false).animate({
+        //             width : "150px"
+        //         },1000,"swing",function(){
+        //             for (const ca of categories) {
+        //                     ca.makeUl();
+        //             }
+        //         });
+        //     }else{
+        //         for(const ca of categories) {
+        //             ca.showSubTitle();
+        //         }
+        //         $(this).stop(true,false).animate({
+        //             width : "50px"
+        //         },1000)
+        //     }
+        // })
         console.log(categories);
     });
 </script>
