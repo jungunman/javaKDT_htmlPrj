@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>board</title>
+    <style>
+        #con{
+            width:900px;
+            border: 1px solid #000;
+        }
+
+        #con > div{
+            width:800px;
+            height: 30px;
+            margin: 5px;
+            
+            clear: both;
+        }
+
+        #con > div > input{
+            width:400px;
+            height: 30px;
+            padding-left: 20px;
+            line-height: 30px;
+            border: 1px solid #888;
+            float: left;
+        }
+
+        #con > div > button, #con > div > .modify{
+            display: block;
+            float: right;
+            margin-right: 20px;
+            width:150px;
+            height: 30px;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var con = document.getElementById("con")
+            var ttt = document.getElementById("ttt")
+            var btn = document.getElementById("btn")
+
+            btn.onclick = function(){
+                var vv = ttt.value
+                ttt.value = ""
+
+
+
+                
+                var box = document.createElement("div")
+
+
+                var content = document.createElement("input")
+                content.value = vv
+                content.readOnly = true
+                box.appendChild(content)
+
+                var delBtn = document.createElement("button")
+                delBtn.innerHTML = "삭제"
+                delBtn.onclick = function(){
+                    //box.remove()
+                    this.parentNode.remove() //둘다 상관없음
+                }
+
+                box.appendChild(delBtn)
+
+
+                var modifyBtn = document.createElement("input")
+                modifyBtn.type = "button"
+                modifyBtn.value = "수정"
+                modifyBtn.className = "modify"
+                modifyBtn.onclick = function(){
+                   
+                    if(this.value=="수정"){
+                        this.value="수정완료"
+                        content.readOnly = false
+                    }else{
+                        this.value="수정"
+                        content.readOnly = true
+                    }
+                }
+
+                box.appendChild(modifyBtn)
+
+                con.appendChild(box)
+
+
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>board</h1>
+    <input type="text" id="ttt"/>
+    <input type="button" id="btn" value="추가"/>
+    <div id="con"/>
+</body>
+</html>

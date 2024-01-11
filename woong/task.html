@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>베놈</title>
+    <style>
+        body {
+            align-items: center;
+            background: #E3E3E3;
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+        }
+
+        @keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(calc(-250px * 7));
+        }
+        }
+        .slider {
+            background: white;
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.125);
+            height: 450px;
+            margin: auto;
+            overflow: hidden;
+            position: relative;
+            width: 1280px;
+        }
+        .slider::before, .slider::after {
+            background: linear-gradient(to right, white 0%, rgba(255, 255, 255, 0) 100%);
+            content: "";
+            height: 100px;
+            position: absolute;
+            width: 300px;
+            z-index: 2;
+        }
+        .slider::after {
+            right: 0;
+            top: 0;
+            transform: rotateZ(180deg);
+        }
+        .slider::before {
+            left: 0;
+            top: 0;
+        }
+        .slider .slide-track {
+            animation: scroll 40s linear infinite;
+            display: flex;
+            width: calc(250px * 14);
+        }
+        .slider .slide {
+            object-fit: cover;
+            height: 450px;
+            width: 300px;
+        }
+        .slide img{
+            width: 300px;
+            height: 350px;
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="slider">
+            <div class="slide-track">
+                <div class="slide">
+                    <img src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2F736x%2F16%2F24%2F31%2F162431cfc7dcdd1800ef98764288c5ae.jpg&type=sc960_832" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA1MjZfMjY4%2FMDAxNjUzNTcyODkwNzY5.wAHdaaG5Y_yQrZrNapv-LCjYTAl7H0QvdB9hQ1IgTv4g._KoF-3dviW3pA3lxvIsaoo_Dz0V52j_0EIvh9UPSnSMg.JPEG.tenma1004%2F11e1d4862164ed714d1ecd967a061eb3.jpg&type=sc960_832" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMDA0MDNfODUg%2FMDAxNTg1ODYyMTg4Mjg4.0gFRwfF8s-Vskc551pcrG0TxEC01bSekCK5ZQPzSMgMg._3jObmyC7UjFtbVflP31ZYcl0Ocy44Ua47Q2KwggZugg.GIF.sigadabilove0509%2F1585862186252.gif&type=sc960_832_gif" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA4MTlfMTIz%2FMDAxNjI5MzQzOTY0Njcx.on9UbYdz0pEQpxHglaZLCduJmyrLoVm4nbWYLuJI14gg.sqGKMERWB0PU8OCVforGkwrmgaHK9n8obOoJPxZpckog.JPEG.renedelucy%2F%25B4%25D9%25BF%25EE%25B7%25CE%25B5%25E5_%25281%2529.jpg&type=sc960_832" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA2MDZfMjE5%2FMDAxNjU0NDQyNDYzMDYz.1yuf9QVxRoTYdx79hpv3YzXjcz3UDlpR1vOgkBPAEg4g.3nhDjta4dhrSF333mPIPTZlgZxWTxbK6bruGAQCXUecg.JPEG.boiboi23%2FKakaoTalk_20220605_234018898_04.jpg&type=sc960_832" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMDA1MDlfMTYg%2FMDAxNTg5MDIyNTU5Mjgx.jgxcQKYdGaLysKCyPEVgt4Oh3yaiC-Hb7EQQhhJrNfwg.fx3qXld0TK03T6taeNsxk2zfB6jYFEjwswBoR4-3iOQg.JPEG.elrl250%2Fhtrey54t45.jpg&type=sc960_832" alt="" />
+                </div><div class="slide">
+                    <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20231124_296%2F1700759397279CiPTK_JPEG%2FB07P1ZSPPQ_image1_ss.jpg&type=sc960_832" alt="" />
+                </div><div class="slide">
+                    <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAxOTAzMTZfMjA1%2FMDAxNTUyNzMxNjA3MDYz.Ew03wtuSLikHMn-7y-X9FmF138-J06yrptlebV86iDYg.u5MB2yy6O9kIR-wJkOZ8yst3HRzK_1Ofw8zObA6yf_Ag.JPEG.dlfogml12%2Ff131934737212175923%25280%2529.jpg&type=sc960_832" alt="" />
+                </div><div class="slide">
+                    <img src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fimage.tving.com%2Fupload%2Fcms%2Fcaip%2FCAIP0900%2FP001513084.jpg%2Fdims%2Fresize%2F480&type=sc960_832" alt="" />
+                </div><div class="slide">
+                    <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA3MTBfMTgx%2FMDAxNjI1ODg1NjkzNjYw.gvvXHvZeOe2mE3SgtIxExWiSWh2GjayI0ttB_bI12ukg.RZI_BmVgtFwlBgI3UVNCxWInjvW0skFTfC6DAeea_Vkg.PNG.phantom002%2FIMG_6046.PNG&type=sc960_832" alt="" />
+                </div><div class="slide">
+                    <img src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi3.ruliweb.com%2Fthumb%2F23%2F11%2F03%2F18b94ee4f6d51fea7.gif&type=sc960_832_gif" alt="" />
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

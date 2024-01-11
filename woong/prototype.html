@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prototype</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        body{
+            width: 1000px;
+            margin: 0 auto;
+        }
+        .student, .title{
+            width: 1000px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            border: 1px solid #000;
+        }
+        .title{
+            margin-top: 10px;
+            width: 900px;
+            background-color: #000;
+            color: wheat;
+        }
+        .student>p, .title>h3{
+            width: 100px;
+        }
+    </style>
+    <script src="./jquery-3.7.1.min.js"></script>
+    <script>
+        Student = function(name, jum){
+            this.name = name;
+            this.jum = jum;
+            this.avg = null;
+            this.tot = null;
+            this.rank = 1;
+            this.setType();
+            this.calc();
+            
+        }
+
+        Student.prototype = {
+            calc : function(){
+                for (const j of this.jum) {
+                    this.tot += j;
+                }
+
+                if(this.kind == "일반"){
+                    this.avg = parseInt(this.tot/this.jum.length);
+                }else{
+                    let multiple = [0.2,0.15,0.05,0.6];
+                    this.jum.forEach((jumsu,i) => {
+                        this.avg += parseInt(jumsu*multiple[i]);
+                    });
+                }
+            },
+            setRank : function(studs){
+                this.rank = 1;
+                 for (const stud of studs) {
+                    if(this.avg < stud.avg){
+                        this.rank ++;
+                    }
+                 }
+            },
+            setType : function(){
+                this.kind = this.jum.length ==3 ? "일반" : "예체능"; 
+            },
+            toString : function(){
+                return `<p>${this.kind}</p>
+                        <p>${this.name}</p>
+                        <p>${this.jum[0]}</p>
+                        <p>${this.jum[1]}</p>
+                        <p>${this.jum[2]}</p>
+                        <p>${this.jum[3] == undefined ? "X" : this.jum[3]}</p>
+                        <p>${this.tot}</p>
+                        <p>${this.avg}</p>
+                        <p>${this.rank}</p>
+                        <p><input type="button" value="수정"/><input type="button" value="삭제"/></p>`;
+            }
+        }
+
+        function sortStudends(studs){
+            studs.sort((me, you)=>{
+                let res = me.kind > you.kind ? 1: me.kind == you.kind ? 0 : -1;
+
+                if(res == 0){
+                    res = me.avg < you.avg ? 1: me.avg == you.avg ? 0 : -1;
+                }
+                if(res == 0){
+                    res = me.name > you.name ? 1:  me.name == you.name ? 0 : -1;
+                }
+                return res
+            })
+        }
+
+        $(function(){
+            let studs = []
+            let optionHtml ="일반";
+            //구분
+            $("select").change(function(){
+                optionHtml = $("option:selected").html();
+                if(optionHtml == "일반"){
+                    $(`input[placeholder="특기"]`).remove();
+                }else{
+                    $(`.inputs>input:last-child`).before($(`<input type="number" placeholder="특기"/>`).css({marginRight : "3px"}));
+                }
+            });
+            
+            //등록
+            $(".inputs > input[type=button]").click(function(){
+                let name = $(".inputs > input[type=text]").val();
+                let jumsTags = $(".inputs > input[type=number]");
+                let jums = [];
+                for (const jum of jumsTags) {
+                    jums.push(Number(jum.value));
+                }
+                studs.push(new Student(name,jums));
+                $("section > .student").remove();
+                for (const stud of studs) {
+                    stud.setRank(studs);
+                    $(`section`).append(`<div class="student">
+                        ${stud}
+                    </div>`);
+                }
+                
+            });      
+        })
+    </script>
+</head>
+<body>
+    <h1>성적표</h1>
+    <section>
+        <div class="inputs">
+            <select>
+                <option value ="일반" selected="selected">일반</option>
+                <option value ="예체능">예체능</option>
+            </select>
+            <input type="text" placeholder="이름"/>
+            <input type="number" placeholder="국어"/>
+            <input type="number" placeholder="수학"/>
+            <input type="number" placeholder="영어"/>
+            <input type="button" value="등록" />
+        </div>
+        <div class="title">
+            <h3>구분</h3>
+            <h3>이름</h3>
+            <h3>국어</h3>
+            <h3>영어</h3>
+            <h3>수학</h3>
+            <h3>특기</h3>
+            <h3>총점</h3>
+            <h3>평균</h3>
+            <h3>등수</h3>
+        </div>
+    </section>
+</body>
+</html>

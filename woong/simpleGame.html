@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오목</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            width: 1100px;
+            height: 1100px;
+            margin: 0 auto;
+            background-color: rgba(27, 143, 197, 0.7);
+        }
+        .wrapper{
+            margin-top: 50px;
+            width: 750px;
+            height: 750px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #000;
+            background-color: rgba(226, 90, 26, 0.7);
+        }
+        .ground{
+            width: 700px;
+            height: 700px;
+            border: 1px solid #000;
+            background-color: rgba(255, 196, 168, 0.4);
+        }
+        .row{
+            display: flex;
+        }
+        .row:last-child>.col{
+            border: none;
+        }
+        .row > .col:last-child{
+            border-right: none;
+        }
+        .col{
+            position: relative;
+            width: 36.842px;
+            height: 36.742px;
+            border-right: 1px solid #000;
+            border-bottom: 1px solid #000;
+        }
+        .lastLineTarget{
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            display: none;
+            
+        }
+        .target{
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            display: none;
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <!-- button 위치 -2px -->
+    <script>
+        document.write(`
+        <div class="wrapper">
+            <div class="ground">`);    
+
+        for (let row = 1; row < 21; row++) {
+            document.write(`<div class=row>`);
+            for (let col = 1; col < 21; col++) {
+                var xy = row+""+col;
+                var isDot = false;
+                if(row % 6 == 0 && col % 6 == 0){
+                    isDot =true;
+                }
+                document.write(`
+                    <div class="col">
+                        <label for="${xy}" class="lables">&nbsp</label>
+                        <input id="${xy}" type="checkbox" class="target dot"/>
+                        <div class="hove"></div>
+                        <div class="${isDot ? "dot":""}"></div>
+                        ${col==20 ? `<input id="${xy}" type="checkbox" class="lastLineTarget"/>` : ""}
+                    </div>
+                `);
+            }
+            document.write(`</div>`);
+        }
+
+        document.write(`</div></div>`);
+    </script>
+</body>
+</html>

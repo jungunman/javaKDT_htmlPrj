@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            font: 0.7em Montserrat, "맑은 고딕", malgungothic, 나눔고딕, nanumgothic, 돋움, Dotum, AppleGothic, sans-serif;;
+            width: 100vw;
+            height: 100vh;
+            margin: 0px;
+        }
+
+        main{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        a{
+            font-size: 13px;
+            text-decoration: none;
+            color: black;
+            font-weight: 600;
+        }
+
+        a:hover{
+            text-decoration: underline;
+        }
+
+        .header__h1{
+            font-size: 50px;
+            margin-top: 100px;
+            text-align: center;
+        }
+        .header__ul{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .header__li{
+            list-style: none;
+            padding : 15px
+        }
+        
+
+        .main__img{
+            width: 350px;
+            height: 600px;
+            object-fit: cover;
+            box-sizing: border-box;
+        }
+        .main__h3{
+            font-size: 11px;
+            font-weight: 400;
+        }
+        .main__p{
+            color:#999999;
+        }
+
+        .main__product{
+            display: flex;
+            justify-content: space-between;
+        }
+        .product{
+            padding: 0px 20px ;
+        }
+
+       @keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(calc(-250px * 7));
+        }
+        }
+        .slider {
+            background: white;
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.125);
+            height: 450px;
+            margin: auto;
+            overflow: hidden;
+            position: relative;
+            width: 1280px;
+        }
+        
+        .slider::after {
+            right: 0;
+            top: 0;
+            transform: rotateZ(180deg);
+        }
+        .slider::before {
+            left: 0;
+            top: 0;
+        }
+        .slider .slide-track {
+            animation: scroll 40s linear infinite;
+            display: flex;
+            width: calc(250px * 14);
+        }
+        .slider .slide {
+            object-fit: cover;
+            height: 150px;
+            width: 300px;
+        }
+        .slide img{
+            width: 300px;
+            height: 450px;
+        }
+    </style>
+    <title>Look Core</title>
+</head>
+<body>
+    <header>
+        <h1 class="header__h1">Look Core</h1>
+        <nav class="header__nav">
+            <ul class="header__ul">
+                <li class="header__li"><a href="#">ABOUT</a></li>
+                <li class="header__li"><a href="#">SHOP</a></li>
+                <li class="header__li"><a href="#">COMMUNITY</a></li>
+                <li class="header__li"><a href="#">MYSHOP</a></li>
+                <li class="header__li"><a href="#">ACCOUNT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="main__products">
+            <div class="main__product">
+                <div class="product">
+                    <a href="#">
+                        <img class="main__img" src="https://ecimg.cafe24img.com/pg576b82206251085/lookcore/web/product/medium/20231121/4efbd1ca4bcbd06b2c5c8ec2a26273ca.jpg">
+                        <h3 class="main__h3">Waffle sweatshirt [와플 맨투맨]</h3>
+                    </a>            
+                    <p class="main__p">38,000원</p>
+                </div>
+                <div class="product">
+                    <a href="#">
+                        <img class="main__img" src="https://ecimg.cafe24img.com/pg576b82206251085/lookcore/web/product/medium/20231125/e6aa9dc41f890df06f433c2b71bc9bf5.jpg">
+                        <h3 class="main__h3">ONE-TUCK WIDE DENIM PANTS [와이드핏 원턱 데님]</h3> 
+                    </a>                        
+                    <p class="main__p">48,000원</p>   
+                </div>
+                <div class="product">
+                    <a href="#">
+                        <img class="main__img" src="https://ecimg.cafe24img.com/pg576b82206251085/lookcore/web/product/medium/20231125/e6aa9dc41f890df06f433c2b71bc9bf5.jpg">
+                        <h3 class="main__h3">ONE-TUCK WIDE DENIM PANTS [와이드핏 원턱 데님]</h3> 
+                    </a>                        
+                    <p class="main__p">48,000원</p>   
+                </div>
+            </div>
+            
+            <div class="main__product">
+                
+                <div class="product">       
+                    <a href="#">
+                        <img class="main__img" src="https://ecimg.cafe24img.com/pg576b82206251085/lookcore/web/product/medium/20231125/79760da49e0fbe1864ee26accabfb6b5.jpg">
+                        <h3 class="main__h3">NORTON PANTS [노턴 팬츠]</h3>
+                    </a>                        
+                    <p class="main__p">58,000원</p>   
+                </div>
+                <div class="product">
+                    <a href="#">
+                        <img class="main__img" src="https://ecimg.cafe24img.com/pg576b82206251085/lookcore/web/product/medium/20231121/4efbd1ca4bcbd06b2c5c8ec2a26273ca.jpg">
+                        <h3 class="main__h3">WINDBREAKER JACKET [ 방수 윈드브레이커 ]</h3> 
+                    </a>                        
+                    <p class="main__p">28,000원</p>   
+                </div>
+                <div class="product">
+                    <a href="#">
+                        <img class="main__img" src="https://ecimg.cafe24img.com/pg576b82206251085/lookcore/web/product/medium/20231122/1b71c2bb9633852311841f02777976c0.jpg">
+                        <h3 class="main__h3">BASIC LOOSE FIT HOODIE [베이직 루즈핏 후디]</h3>  
+                    </a>                        
+                    <p class="main__p">38,000원</p>  
+                </div>
+
+    
+            </div>
+
+        </div>
+
+    </main>
+    <footer>
+        <div class="slider">
+            <div class="slide-track">
+                <div class="slide">
+                    <img src="https://ecimg.cafe24img.com/pg576b82206251085/lookcore/web/product/medium/20231121/4efbd1ca4bcbd06b2c5c8ec2a26273ca.jpg" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="https://ecimg.cafe24img.com/pg576b82206251085/lookcore/web/product/medium/20231125/99a348e4431885b73e48ab017bb8d577.jpg" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="https://ecimg.cafe24img.com/pg576b82206251085/lookcore/web/product/medium/20231122/990c0e59e6fd550adf3f3f740addbaf3.jpg" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="https://ecimg.cafe24img.com/pg576b82206251085/lookcore/web/product/medium/20231125/e6aa9dc41f890df06f433c2b71bc9bf5.jpg" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="https://ecimg.cafe24img.com/pg576b82206251085/lookcore/web/product/medium/20231122/1b71c2bb9633852311841f02777976c0.jpg" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="https://ecimg.cafe24img.com/pg576b82206251085/lookcore/web/product/medium/20231125/e6aa9dc41f890df06f433c2b71bc9bf5.jpg" alt="" />
+                </div><div class="slide">
+                    <img src="https://ecimg.cafe24img.com/pg576b82206251085/lookcore/web/product/medium/20231125/79760da49e0fbe1864ee26accabfb6b5.jpg" alt="" />
+                </div><div class="slide">
+                    <img src="https://www.cheat-key.com/web/product/big/202310/06fe087d32358ed7fd6543904fb6aa8b.jpg" alt="" />
+                </div><div class="slide">
+                    <img src="https://www.cheat-key.com/web/product/big/202211/ce969fc8806f155a6c6e238c725986ef.jpg" alt="" />
+                <div class="slide">
+                    <img src="https://www.cheat-key.com/web/product/extra/big/20211208/9729f86d56d1759c6906d4684601e05f.jpg" alt="" />
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+
+           

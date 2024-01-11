@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery Student Score</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        body{
+            width: 800px;
+            margin: auto;
+        }
+
+        .inputBox > input{
+            padding: 5px;
+        }
+        .students{
+            margin-top: 20px;
+        }
+        .title{
+            border-top: 1px solid #000;
+            border-bottom: 1px solid #000;
+            padding:10px 0px;
+            display: flex;
+            align-items: center;
+            
+            font-weight: 600;
+        }
+        .title>li{
+            margin-left: 70px;
+        }
+        .student > ul{
+            display: flex;
+          
+            align-items: center;
+            border-bottom: 1px solid #000;
+            padding :5px;
+        }
+        .student > ul>li{
+            width: 74px;
+            margin-left: 31px;
+        }
+        .student > ul>li:first-child{
+            margin-left: 57px;
+        }
+        .student > ul>li:nth-child(2){
+            margin-left: 42px;
+        }
+
+
+    </style>
+    <script src="./jquery-3.7.1.min.js"></script>
+    <script>
+        
+        $(()=>{
+            $(".inputBox > input:last-child").click(()=>{
+                let canSum = true;
+                if(""==$(".inputBox > input:first-child").val()){
+                    alert("이름 공백 불가");
+                    canSum = false;
+                    for (let i = 1; i < $(".inputBox > input").length; i++) {
+                        $(".inputBox > input:nth-child("+i+")").val("");
+                    }
+                } 
+                
+                let tot = 0;
+                let avg = 0;
+
+
+                for (let i = 2; i < $(".inputBox > input").length; i++) {
+                    if(Number($(".inputBox > input:nth-child("+i+")").val())>100){
+                        alert("점수는 100보다 넘을 수 없습니다");
+                        canSum =  false;
+                        break;
+                    }
+                    tot+=Number($(".inputBox > input:nth-child("+i+")").val()); 
+                }
+
+                if(canSum){
+                    avg = parseInt(tot/3);
+                    $(".student").append("<ul></ul>");
+                    for (let i = 1; i < $(".inputBox > input").length; i++) {
+                        if("" == $(".inputBox > input:nth-child("+i+")").val()){
+                            $(".student>ul:last-child").append(`<li>${0}</li>`);
+                        }else{
+                            $(".student>ul:last-child").append(`<li>${$(".inputBox > input:nth-child("+i+")").val()}</li>`);
+                        }
+                    }
+                    $(".student>ul:last-child").append(`<li>${tot}</li>`);
+                    $(".student>ul:last-child").append(`<li>${avg}</li>`);
+                    $(".student>ul:last-child").append(`<button>수정</button><button>삭제</button>`);
+                    $("ul>button").css({padding : "2px"})
+                    
+                    for (let i = 1; i < $(".inputBox > input").length; i++) {
+                        $(".inputBox > input:nth-child("+i+")").val("");
+                    }
+                }
+                let canUpdate = true;
+                //수정 버튼
+                $("button").click(()=>{
+                    console.log($(this));
+                    if(canUpdate){
+                        //버튼 이름 바꾸기
+                        $("ul>button").eq(0).html("결정");
+                        canUpdate=false;
+                    }else{
+                        $("ul>button").eq(0).html("수정");
+                        canUpdate = true;
+                    }
+                });
+            })
+
+        })
+    </script>
+</head>
+<body>
+    <div class="inputBox">
+        <input type="text" placeholder="이름" name="name"/>
+        <input type="text" placeholder="국어" name="kor"/>
+        <input type="text" placeholder="영어" name="eng"/>
+        <input type="text" placeholder="수학" name="math"/>
+        <input type="button" value="등록"/>
+    </div>
+    <div class="students">
+        <ul class="title">
+            <li>이름</li>
+            <li>국어</li>
+            <li>영어</li>
+            <li>수학</li>
+            <li>총점</li>
+            <li>평점</li>
+        </ul>
+        <div class="student">
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            margin:0;
+            width: 100vw;
+            height: 88vh;
+            font-family: Malgun Gothic,'맑은 고딕',Helvetica,sans-serif;
+        }
+
+        main{
+            width: inherit;
+            height: 100%;
+        }
+
+        .container{
+            width: 500px;
+            height: 100%;
+            margin: 0 auto;
+        }
+
+        .container h1{
+            margin: 0px;
+            padding: 0px 0xp 20px 0px;
+            font-size: 25px;
+            color: #09aa5c;
+        }
+
+        .real__Email{
+            font-size: 13px;
+            color:  #c6c6c6;
+            padding: 20px 0px 10px 0px;
+            text-align: end;
+        }
+
+        .register__form{
+            height: inherit;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .register__submitBtn{
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .inputs__cols{
+            border : 1px solid #c6c6c6;
+            border-radius: 10px; 
+        }
+        .inputs__cols:last-child{
+            margin-top: 10px;
+        }
+        
+        .col{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom:  1px solid #c6c6c6;
+        }
+
+        .col:last-child{
+            border: none;
+        }
+        .col__p{
+            padding-right: 10px;
+        }
+        .col input{
+            margin-left: 5px;
+            border: none;
+            padding: 10px 5px;   
+        }
+        .col__genders input{
+            opacity: 0;
+        }
+
+        .col__genders{
+            border: 1px solid #c6c6c6;
+            width: 100%;
+            margin: 7px;
+            border-radius: 5px;
+            display: flex;
+        }
+
+        .col__gender{
+            width: 50%;
+            height: 100%;
+            padding:5px;
+            text-align: center;
+            color: #929294;
+            font-size: 13px;
+        }
+        .col__gender:last-child{
+            border-left: 1px solid #c6c6c6;
+        }
+
+        .register__submitBtn input{
+            width: 100%;
+            padding: 14px 0;
+            border-radius: 6px;
+            border: 1px solid rgba(0,0,0,0.05);
+            background-color: #09aa5c;
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 22px;
+            color: #fff;
+        }
+
+    </style>
+    <title>Naver Register</title>
+</head>
+<body>
+    <Main>
+        <div class="container">
+            <h1>NAVER</h1>
+            <div class="real__Email">
+                <label for="email__chk">
+                    실명 인증된 아이디로 가입
+                    <input id="email__chk" type="checkbox" >
+                </label>
+            </div>
+            <form action="#" class="register__form">
+                <div class="register__inputs">
+                    <div class="inputs__cols">
+                        <div class="col">
+                            <input id="id" type="text" placeholder="아이디">
+                            <p class="col__p">@naver.com</p>
+                        </div>
+                        <div class="col">
+                            <input id="pwd" type="text" placeholder="비밀번호">
+                            <p class="col__p">&nbsp;</p>
+                        </div>
+                        <div class="col">
+                            <input id="email" type="text" placeholder="[선택] 비밀번호 분실 시 확인용 이메일">
+                            <p class="col__p">&nbsp;</p>
+                        </div>                       
+                    </div>
+                    <div class="inputs__cols">
+                        <div class="col">
+                            <input id="id" type="text" placeholder="이름">
+                            <p class="col__p">&nbsp;</p>
+                        </div>
+                        <div class="col">
+                            <input id="pwd" type="text" placeholder="생년월일 8자리">
+                            <p class="col__p">&nbsp;</p>
+                        </div>
+                        <div class="col">
+                            <div class="col__genders">
+                                <div class="col__gender">
+                                    <label for="male">남자<input type="radio" name="gender" id="male"></label>
+                                </div>
+                                <div class="col__gender"> 
+                                    <label for="female">여자<input type="radio" name="gender" id="female"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <input id="pwd" type="text" placeholder="대한민국 +82">
+                            <p class="col__p">&nbsp;</p>
+                        </div>
+                        <div class="col">
+                            <input id="email" type="text" placeholder="휴대전화번호">
+                            <p class="col__p">&nbsp;</p>
+                        </div>    
+                    </div>
+                </div>
+                <div class="register__submitBtn">
+                    <input type="submit" value="인증요청">
+                </div>
+            </form>
+        </div>
+    </Main>
+</body>
+</html>

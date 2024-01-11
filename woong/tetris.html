@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tetris</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            margin: auto;
+            width: 300px;   /*10, 15*/
+            height: 450px;
+            
+        }
+        h1{
+            margin-bottom: 30px;
+        }
+        
+        section{
+            position: relative;
+            margin: auto;
+            width: 300px;   /*10, 15*/
+            height: 450px;
+            border: 1px solid #ccc;
+        }
+        section > div{
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            box-sizing: border-box; /*테두리를 객체안에 넣기*/
+            border: 5px solid #ccc;
+        }        
+    </style>
+    <script>
+        blocks = []
+        shape = [
+             
+             [
+                [[-1,0],[0,0],[0,1],[1,0]],  //0    ㅜ
+                [[-1,0],[0,0],[0,1],[0,-1]],  //90   ㅓ
+                [[-1,0],[0,0],[0,-1],[1,0]],  //180  ㅗ
+                [[0,-1],[0,0],[0,1],[1,0]]    //270   ㅏ
+            ], 
+            [
+                [[-1,0],[0,0],[1,0],[2,0]],  //0  -
+                [[0,-1],[0,0],[0,1],[0,2]]  //90  |    
+            ],
+            [
+                [[-1,0],[0,0],[1,0],[1,1]],  // 0
+                [[0,-1],[0,0],[0,1],[1,1]],  // 90
+                [[-1,0],[0,0],[1,0],[-1,1]], // 180
+                [[0,-1],[0,0],[0,1],[-1,-1]]  // 270
+            ],
+            [
+                [[-1,1],[-1,0],[0,0],[1,0]],  // 0
+                [[0,-1],[0,0],[0,1],[-1,1]],  // 90
+                [[-1,-1],[0,-1],[0,0],[0,1]], // 180
+                [[1,-1],[-1,0],[0,0],[1,0]]   // 270
+            ],
+            [
+                [[-1,0],[0,0],[0,1],[1,1]],   // 0
+                [[0,-1],[0,0],[-1,0],[-1,1]], // 90
+                [[-1,0],[0,0],[0,1],[1,1]],   // 180
+                [[0,-1],[0,0],[-1,0],[-1,1]]  // 270
+            ],
+            [
+                [[-1,1],[0,1],[0,0],[1,0]],   // 0
+                [[0,-1],[0,0],[1,0],[1,1]],    // 90
+                [[-1,1],[0,1],[0,0],[1,0]],   // 180
+                [[0,-1],[0,0],[1,0],[1,1]]     // 270
+            ],
+            [
+                [[-1,1],[-1,0],[0,0],[1,0]],   // 0
+                [[0,-1],[0,0],[0,1],[-1,-1]],  // 90
+                [[-1,0],[0,0],[1,0],[1,-1]],   // 180
+                [[0,-1],[0,0],[0,1],[1,1]]     // 270  
+            ],
+            [
+                [[-1,0],[-1,1],[0,0],[0,1]],   // 0
+                [[-1,0],[-1,1],[0,0],[0,1]],   // 90
+                [[-1,0],[-1,1],[0,0],[0,1]],   // 180
+                [[-1,0],[-1,1],[0,0],[0,1]]    // 270
+            ],
+            
+        ]
+        
+        window.onload=function(){
+            section = document.getElementsByTagName("section")[0]
+            point = 0;
+            pointWrod = document.createElement("p");
+            pointWrod.className = "pointWrod";
+            pointWrod.style.fontWeight = 600;
+            pointWrod.style.fontSize = "15px";
+            pointWrod.style.position ="absolute";
+            pointWrod.style.top = "-20px";
+            pointWrod.innerHTML = `${point}점`;
+            section.appendChild(pointWrod);
+            curr = null
+            function blockCreate(){
+                //컬러
+                let blockColor = ["red","yellow","greenyellow","blue","blueviolet","orange","salmon","black"];
+                //현재 움직이는 것이 없으면 새로 생성
+                if(curr==null){
+                    curr = {}
+                    curr.block = []   //실제 벽돌
+                    curr.x =5
+                    curr.y = 0
+                    curr.nx = 5
+                    curr.ny = 0 
+                    curr.rotate = 0
+                    let posAndColor =Math.floor(Math.random()*shape.length);
+                    curr.rotatePos = shape[posAndColor]
+
+                    for (var i = 0; i<4 ; i++) {
+                        var block = document.createElement("div")
+                        block.style.backgroundColor=blockColor[posAndColor];
+                        curr.block.push(block)
+                        section.append(block)
+                    }  
+                }
+                
+            }
+            
+            //시간에 따른 자동 움직임
+            function timerGoGo(){
+                 /*10, 15*/
+                blockCreate()
+                //아래방향으로 움직이기
+                currMoving(0,1)     
+            }
+
+            timer = setInterval(timerGoGo, 500)
+        }
+
+
+        //블럭 위치 이동
+        function blockMoving(){
+            if(curr==null){
+                return
+            }
+            curr.x = curr.nx
+            curr.y = curr.ny
+            for(i in curr.rotatePos[curr.rotate]){
+                curr.block[i].style.left = (curr.x+curr.rotatePos[curr.rotate][i][0])*30+"px"
+                curr.block[i].style.top = (curr.y+curr.rotatePos[curr.rotate][i][1])*30+"px"
+            }
+           
+        }
+
+        //기존블럭과 겹치는지 확인
+        function blocksTouch(block){
+            //console.log(block[0]+curr.nx, block[1]+curr.ny)
+            for (const bb of blocks) {
+                if(bb.x == block[0]+curr.nx && bb.y == block[1]+curr.ny){
+                    console.log(bb);
+                    if(bb.y <= 2){
+                        section.remove();
+                        clearInterval(timer);
+                        let gameOver = document.createElement("div");
+                        gameOver.style.width = "400px";
+                        gameOver.style.height = "600px";
+                        gameOver.style.color = "#fff";
+                        gameOver.style.backgroundColor = "red";
+                        gameOver.innerHTML = "게임 패배";
+                        gameOver.style.fontSize ="30px";
+                        gameOver.style.display = "flex";
+                        gameOver.style.alignItems = "center";
+                        gameOver.style.justifyContent = "center";
+                        gameOver.style.fontWeight = "600";
+                        document.querySelector("body").appendChild(gameOver);
+                        alert("게임 종료");
+                    }
+                    return true    
+                }
+            }
+            return false
+        }
+
+        function checkCollision(x, y) {
+            if (curr == null) {
+                return false;
+            }
+            
+            for (block of curr.rotatePos[curr.rotate]) {
+                var newX = curr.nx + block[0] + x;
+                var newY = curr.ny + block[1] + y;
+                // 좌표가 화면 밖으로 벗어나면 충돌
+                if (newX < 0 || newX >= 10 || newY >= 15) {
+                    return true;
+                }
+                // 다른 블록과 충돌 확인
+                for (const bb of blocks) {
+                    if (bb && newX === bb.x && newY === bb.y) {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+        function currMoving(x, y){ //움직이기
+            if(curr==null){
+                return
+            }
+            
+            for(block of curr.rotatePos[curr.rotate]){ //좌우 벽을 벗어나면 나가기
+                if(curr.nx+ block[0]+x < 0 || curr.nx + block[0]+x >= 10 ){
+                    return
+                }
+            }
+            curr.nx+=x
+            curr.ny+=y
+            
+            //바닥인지 확인    ,   기존블럭과 겹치는지  확인   
+            for(block of curr.rotatePos[curr.rotate]){
+                
+                if(curr.ny+ block[1] >= 15 || blocksTouch(block)){
+                    let bbs = curr.rotatePos[curr.rotate]
+                    for(var i in bbs){
+                        //전체 블럭에 넣기
+                        blocks.push(
+                            {x:curr.x+bbs[i][0], 
+                                y:curr.y+bbs[i][1],
+                                bb:curr.block[i] })
+                            }
+                            
+                            
+                            //줄삭제하기
+                            lineRemove()
+                            console.log(blocks)
+                            curr = null
+                            break
+                        }
+                        
+            }
+
+            blockMoving()     
+        }
+
+        
+
+        function currRotate(){
+
+            if(curr==null){
+                return
+            }
+            
+            var ro = eval(curr.rotate)
+            ro++
+            curr.rotate = ro%curr.rotatePos.length  
+            //console.log("currRotate", curr.rotate)
+        }
+
+        function lineRemove(){
+            for (let i = 0; i < 15; i++) {//전체 줄 스캔
+                let arr = []
+                for (var bb of blocks) {
+                    if(bb && i==bb.y){
+                        arr.push(bb.x)
+                    }
+                }
+                
+                var chk = true
+                for(let col = 0 ; col<10; col++){
+                    if(!arr.includes(col)){
+                        chk = false
+                    }
+                }
+
+                //줄 지우기 확인
+                if(chk){
+
+                    //현재 줄 내용 삭제
+                    for (var ee = 0; ee <blocks.length; ee++) {
+                        
+                        if(blocks[ee] && i==blocks[ee].y){
+                            blocks[ee].bb.remove()  //div 삭제
+                            point += 1;
+                            pointWrod.innerHTML = `${point}점`;
+                            if(point >= 20){
+                                section.remove();
+                                clearInterval(timer);
+                                let gameWin = document.createElement("div");
+                                gameWin.style.width = "400px";
+                                gameWin.style.height = "600px";
+                                gameWin.style.color = "#fff";
+                                gameWin.style.backgroundColor = "greenyellow";
+                                gameWin.innerHTML = "게임 승리";
+                                gameWin.style.fontSize ="30px";
+                                gameWin.style.display = "flex";
+                                gameWin.style.alignItems = "center";
+                                gameWin.style.justifyContent = "center";
+                                gameWin.style.fontWeight = "600";
+                                document.querySelector("body").appendChild(gameWin);
+                        alert("게임 종료");
+                            }
+
+                            delete blocks[ee]       //블럭들의 정보에서 삭제
+                        }
+                    }
+
+                    for(var upline=i; upline>=0; upline--){
+                        for (var bb of blocks) {
+                            if(bb && upline==bb.y){
+                                bb.y++
+                                bb.bb.style.top = bb.y*30+"px"
+                            }
+                        }
+                    }
+                    
+                }
+            }
+
+            let buf = []
+            for (const bb of blocks) {
+                //console.log(bb)
+                if(bb){
+                    buf.push(bb)
+                }
+            }
+            blocks = buf
+            
+            //console.log(blocks)
+        }
+
+        
+
+
+        function spaceBar() {
+            if (curr == null) {
+                return;
+            }
+
+            // 현재 블록을 최하단으로 이동
+            while (!checkCollision(0, 1)) {
+                currMoving(0, 1);
+            }
+            
+        }
+
+        window.onkeydown=function(e){
+            var x = 0
+            var y = 0
+
+            switch(e.keyCode){
+                case 38: //위
+                //me.yy -= 5
+                currRotate()
+                break
+                case 40: //아래
+                y = 1
+                break
+                case 37: //좌
+                x = -1
+                break
+                case 39: //우
+                x = 1
+                break
+                case 32: //스페이스바
+                    spaceBar();
+                    return false;
+                
+            }
+            currMoving(x, y)
+        }
+
+
+/*
+도형에 색을 넣을 것
+도형의 종류를 늘릴 것
+게임을 종료할 것
+스페이스바 처리할 것
+*/
+
+    </script>
+</head>
+<body>
+    <h1>tetris</h1>
+
+    <section>
+       
+    </section>
+</body>
+</html>
