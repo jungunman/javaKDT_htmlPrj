@@ -99,10 +99,10 @@
                 $("nav > .main > .sub").on("click", function(){
                     toggle = !toggle;
                     if(toggle){
-                        $("nav > .main > .sub > div").animate({display:"block"},0)
-                            .animate({width:"471px"}, 1000)
+                        console.log($(this));
+                        $(this).children("div").animate({width:"471px",}, 1000)
                     }else{
-                        $("nav > .main > .sub > div").animate({width:"0px"}, 1000)
+                        $(this).children("div").animate({width:"0px"}, 1000)
                     }
                 })
         })
@@ -113,7 +113,14 @@
     <nav>
         <div class="main">
             <div class="title"  data-open="false">회사소개</div>
-            <div class="sub">인사말</div>
+            <div class="sub">인사말
+                <div>
+                    <div>헬로말</div>
+                    <div>멍멍말</div>
+                    <div>기체후일향말</div>
+                    <div>와우와우말</div>
+                </div>
+            </div>
             <div class="sub">인사개
                 <div>
                     <div>헬로개</div>
