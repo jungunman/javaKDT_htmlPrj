@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>children_find</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        #con{
+            
+            width:400px;
+            border: 1px solid #333;
+        }
+        section{
+            border: 1px solid #333;
+            margin: 5px;
+        }
+        
+    </style>
+    <script src="../fff/js/jquery-3.7.1.min.js"></script>
+    <script>
+        
+        $(function(){
+            $("section:first-of-type > div:last-child >  div:nth-child(3)").css({
+                backgroundColor:"#f00"
+            })
+            
+            $("section:first-of-type .ccc").css({
+                backgroundColor:"#0f0"
+            })
+
+            
+            /*
+            find, children  : 현재 엘리먼트의 하위 요소 검색 
+            find : 모든 하위요소 검색 
+            children : 직계 하위요소 검색
+             */
+
+            //find
+            //$("section").eq(1)  모든 하위요소중 #qwer 검색
+            $("section").eq(1).find("#qwer").css({
+                backgroundColor:"#00f"
+            })
+
+            //children
+            //$("section").eq(1)  직계하위요소중 #zxcv 검색
+            $("section").eq(1).children("#zxcv").css({
+                backgroundColor:"#00f"
+            })
+
+            $("section").children(".aaa").css({
+                "font-style": "italic"
+            })
+
+            $("section").find(".bbb").css({
+                "font-style": "italic",
+                fontWeight: "bolder"
+            })
+
+
+            //검색된 결과가 여러개인 경우 배열형태로 처리
+            $("section").find(".bbb").each(function(i,v){
+                log(i+" : " + $(v).html())
+            })
+
+            log($("section").find(".bbb").length)   //4
+            log($("section").find(".ddd").length)   //0
+
+            
+            for (const ee of $("section").children("div")) {
+                //log($(ee).children(".ccc").html())
+                var ccc = $(ee).children(".ccc")
+                if(ccc.length){
+                    log(ccc.html())
+                }
+            }
+        })
+
+        function log(msg){
+            $("#con").html($("#con").html()+msg+"<br/>")
+        }
+    </script>
+</head>
+<body>
+    <h1>children_find</h1>
+    <section>
+        <div>0 div 0
+            <div>0 div 00</div>
+            <div class="aaa">0 div 01</div>
+            <div class="bbb">0 div 02</div>
+            <div class="aaa">0 div 03</div>
+        </div>
+        <div>0 div 1
+            <div>0 div 10</div>
+            <div class="aaa">0 div 11</div>
+            <div class="bbb">0 div 12</div>
+            <div class="aaa ccc">0 div 13</div>
+        </div>
+    </section>
+
+    <section>
+        <div>1 div 0
+            <div>1 div 00</div>
+            <div class="aaa" id="qwer">1 div 01</div>
+            <div class="bbb">1 div 02</div>
+            <div class="aaa ccc">1 div 03</div>
+        </div>
+        <div>1 div 1
+            <div>1 div 10</div>
+            <div class="aaa">1 div 11</div>
+            <div class="bbb">1 div 12</div>
+            <div class="aaa" id="zxcv">1 div 13</div>
+        </div>
+    </section>
+    <div id="con" />
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class_attr_prop</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        
+        section{
+            border: 1px solid #333;
+            width:300px;
+            height: 300px;
+            background-color: #0ff;
+        }
+        .aaa{
+            
+            background-color: #ff0;
+        }
+        .bbb{
+            
+            background-color: #0f0;
+        }
+        .ccc{
+            border: 1px solid #333;
+            width:200px;
+            height: 24px;
+        }
+        
+        
+    </style>
+    <script src="../fff/js/jquery-3.7.1.min.js"></script>
+    <script>
+        
+        $(function(){
+            $("section > div").eq(0).addClass("aaa")
+            $("section > div").eq(1).addClass("bbb")
+            $("section > div").eq(0).addClass("ccc")
+            $("section > div").eq(2).addClass("aaa")
+            $("section > div").eq(0).removeClass("aaa")
+
+            console.log($("section > div").eq(0).hasClass("aaa"))
+            console.log($("section > div").eq(2).hasClass("aaa"))
+            console.log("--------------------------------")
+            $("form > input").eq(0).attr("placeholder","이름이뭐예용")
+            $("form > input").eq(1).val("홍길동")
+            $("form > input").eq(2).prop("placeholder","전화번호뭐예용")
+
+            $("#ho1").attr("checked",true)
+            $("#ho3").prop("checked",true)
+            console.log($("#ho1").attr("checked") , $("#ho1").prop("checked") )
+            console.log($("#ho2").attr("checked") , $("#ho2").prop("checked") )
+            console.log($("#ho1").is(":checked") )
+            console.log($("#ho2").is(":checked"))
+            console.log($("#ho3").is(":checked"))
+            console.log("--------------------------------")
+            $("#ho1").removeAttr("checked")
+            console.log($("#ho1").is(":checked"))
+            console.log($("#ho2").is(":checked"))
+            console.log($("#ho3").is(":checked"))
+        })
+</script>
+</head>
+<body>
+    <h1>class_attr_prop</h1>
+    <section>
+        <div>매의 눈 권법 1</div>
+        <div>매의 눈 권법 2</div>
+        <div>매의 눈 권법 3</div>
+        <div>매의 눈 권법 4</div>
+    </section>
+
+    <form action="">
+        <input type="text"><br/>
+        <input type="text"><br/>
+        <input type="text"><br/>
+        <input type="checkbox" id="ho1">잠자기
+        <input type="checkbox" id="ho2">허리가
+        <input type="checkbox" id="ho3">아파
+    </form>
+</body>
+</html>

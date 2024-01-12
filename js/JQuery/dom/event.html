@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+
+        section , #rrr{
+            width:500px;
+            height: 250px;
+            background-color: #ff0;
+            margin: 5px;
+            float: left;
+        }
+        section > div, #rrr > div{
+            width:80px;
+            height: 80px;
+            float: left;
+            margin: 5px;
+            border: 1px solid #aaa;
+            overflow: auto;
+        }
+        #con{
+            width:600px;
+            border: 1px solid #aaa;
+            margin: 5px;
+            
+        }
+
+        
+    </style>
+    <script src="../fff/js/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function(){
+            function log(ttt){
+                $("#con").html($("#con").html()+ttt+"<br/>")
+            }
+
+
+            $("section > div").eq(0).click(function(){
+                $(this).css({color:"#f00"})
+            })
+            $("section > div").on("click",function(){
+
+                //eq()  :: 배열에서 몇번째를 가져와라
+                //index() :: 내가 배열에서 몇번째냐
+                $("#rrr > div").eq($(this).index()).css({backgroundColor:"#f00"})
+            })
+            $("section > div").eq(1).mousedown(function(){
+                log("mousedown 이여 1")
+            })
+            $("section > div").eq(2).on("mousedown",function(){
+                log("mousedown 이여 2")
+            })
+
+            $("section > div").eq(2).on("mouseup",function(){
+                log("mouseup 이여 2")
+            })
+
+            $("section > div").eq(3).on("mousedown",function(){
+                log("mousedown 이여 3")
+            }).on("mouseup",function(){
+                log("mouseup 이여 3")
+            })
+            $("section > div").eq(4).hover(
+                function(){
+                    log("hover -> over 여 4")
+                },
+                function(){
+                    log("hover -> out 여 4")
+                }
+            )
+            $("section > div").eq(5).hover(
+                function(){
+                    log("hover -> over, out 여 5")
+                }
+            )
+            $("section > div").eq(6).mouseover(function(){
+                log("mouseover 이여 6")
+            }).mouseout(function(){
+                log("mouseout 이여 6")
+            })
+            $("section > div").eq(7).mousemove(function(e){
+                log("mousemove 이여 7 : "+e.pageX+","+e.pageY)
+            })
+
+            $("section > div").eq(8).scroll(function(){
+                log("scroll 이여 8 : "+$(this).scrollLeft()+","+$(this).scrollTop())
+            })
+            $("input:first-of-type").keydown(function(e){
+                log("keydown 이여  : "+e.keyCode)
+            }).on("keyup", function(e){
+                log("keyup 이여  : "+e.keyCode)
+            })
+
+            $("input:last-of-type").focus(function(){
+                log("focus 여  : ")
+            }).on("blur", function(){
+                log("blur 여  : ")
+            })
+            $("select").on("change",function(){
+                log("change 여  : "+$(this).val())
+            })
+
+            $(window).on("resize",function(e){
+                log("resize 여  : "+$(this).width()+","+$(this).height())
+            })
+        })
+    </script>
+</head>
+<body>
+    <h1>event</h1>
+    <section>
+        <div>0</div>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8
+            <img src="../fff/child_1.jpg" alt="">
+        </div>
+        <div>9</div>
+    </section>
+    <div id="rrr">
+        <div>0</div>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+    </div>
+    <input type="text">
+    <input type="text">
+    <select name="" id="">
+        <option>네이버</option>
+        <option>구글</option>
+        <option>다음</option>
+        <option>인스타</option>
+    </select>
+    
+    <div id="con"/>
+</body>
+</html>
