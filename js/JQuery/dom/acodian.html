@@ -79,12 +79,12 @@
         });
         //문열어 닫아!
         let isOpenTitle = false;
-        let nav = $("<nav></nav>");
-        $("section").after(nav);
-
+        
         $("section").on("click",function(){
             isOpenTitle = !isOpenTitle;
             if(isOpenTitle){
+                let nav = $("<nav></nav>");
+                $("section").after(nav);
                 nav.css({backgroundColor:"rgb(221, 91, 16)",
                         width:"90px",
                         height:"40px"});
