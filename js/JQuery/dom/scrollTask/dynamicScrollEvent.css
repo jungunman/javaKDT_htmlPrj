@@ -1,0 +1,176 @@
+
+*{
+    margin : 0;
+    padding:0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+html,body,main{
+    width: 100%;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 1px 2px 5px #fff;
+    background-image: url(https://png.pngtree.com/background/20211217/original/pngtree-digital-permutation-matrix-overlapping-green-background-picture-image_1594414.jpg);
+
+}
+
+header>h1{
+    padding: 20px;
+    font-size: 50px;
+    color: #2dd63b;
+    text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 40px #0fa,
+      0 0 80px #0fa, 0 0 90px #0fa, 0 0 100px #0fa, 0 0 150px #0fa;
+}
+
+main>.timeZone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+    padding-bottom: 30px ;
+}
+main>.timeZone>h2{
+    font-size: 40px;
+    color: black;
+    text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 40px #0fa,
+    0 0 80px #0fa, 0 0 90px #0fa, 0 0 100px #0fa, 0 0 150px #0fa;
+    padding: 10px;
+}
+
+main > .choice{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(https://png.pngtree.com/thumb_back/fh260/background/20220523/pngtree-illustration-of-matrix-style-image_1383902.jpg);
+    padding: 50px;
+}
+
+main > .choice > div >img{
+    border-radius: 20px;
+    width: 450px;
+    height: 450px;
+}
+
+main > .choice > div:first-child >img{
+    border: 3px solid rgb(231, 102, 102);
+    box-shadow: 5px 5px 150px rgb(245, 39, 39);
+}
+
+main > .choice > div:last-child >img{
+    border: 3px solid rgb(115, 115, 240);
+    box-shadow: 5px 5px 150px rgb(43, 152, 241);
+    margin-left: 30px;
+}
+
+/*Red Zone*/
+.red-zone{
+    background-image: url(https://img.freepik.com/premium-vector/3d-matrix-background_108964-302.jpg);
+    height: 1024px;
+    color: #fff;
+    width: 100%;
+    position: relative;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.red-zone>.nav-box{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+.red-zone>.nav-box>nav{
+    box-sizing: border-box;
+    width: 51%;
+}
+.red-zone>.nav-box>nav{
+    font-size: 20px;
+}
+
+.swingNav-first{
+    position: absolute;
+    top:0px;
+    left: -50%;
+    transition-duration: 0.5s;
+}
+
+.showNav-first{
+    position: fixed;
+    top:0px;
+    left: 0%;
+    transition-duration: 0.5s;
+}
+.showNav-last{
+    position: fixed;
+    top:0px;
+    left: 50%;
+    transition-duration: 0.5s;
+}
+
+.swingNav-last{
+    position: absolute;
+    top: 0px;
+    left:100%;
+    transition-duration: 0.5s;
+}
+
+.red-textColor{
+    color: rgb(231, 37, 37);
+    text-shadow: 0 0 4px rgb(231, 37, 37), 0 0 11px rgb(231, 37, 37), 0 0 19px #fff, 0 0 40px #0fa,
+    0 0 80px rgb(231, 37, 37), 0 0 90px rgb(231, 37, 37), 0 0 100px rgb(231, 37, 37), 0 0 150px rgb(231, 37, 37);
+}
+
+.red-zone>.nav-box>nav:first-child>ul{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: black;
+    list-style: none;
+    padding: 30px 0px;
+}
+.red-zone>.nav-box>nav:last-child>ul{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: black;
+    list-style: none;
+    padding: 30px;
+}
+.red-zone>.nav-box>nav:first-child>ul>li{
+    margin-right: 150px;
+}
+.red-zone>.nav-box>nav:first-child>ul>li:last-child{
+    margin-right: 75px;
+}
+.red-zone>.nav-box>nav:last-child>ul>li{
+    margin-left: 150px;
+}
+.red-zone>.nav-box>nav:last-child>ul>li:first-child{
+    margin-left: 75px;
+}
+
+.red-zone > .contents{
+    padding: 30px;
+    width: 1000px;
+    background-color: #fff;
+    color: black;
+    display: flex;
+    transition: 0.5s;
+}
+.visibility-hidden{
+    visibility: hidden;
+}
+
+

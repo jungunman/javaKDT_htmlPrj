@@ -1,0 +1,48 @@
+
+main > .timeZone > .clock{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border: 1px solid #80e262;
+    border-radius: 100px;
+    box-shadow: 5px 5px 50px #80e262;
+    background-image: url(./clock.png);    
+    box-sizing: border-box;
+    object-fit: contain;
+}
+
+main > .timeZone > .clock > .hours{
+    position: absolute;
+    transform-origin: top left;
+    height: 60px;
+    width: 3px;
+    background-color: #80e262;
+    box-shadow: 1px 1px 5px #80e262;
+    top: 100px;
+    left: 100px;
+    z-index: 2;
+}
+
+main > .timeZone > .clock > .minute{
+    position: absolute;
+    transform-origin: top left;
+    height: 75px;
+    width: 2px;
+    box-shadow: 1px 1px 4px #e95757;
+    background-color: #e95757;
+    top: 100px;
+    left: 100px;
+    z-index: 3;
+}
+
+main > .timeZone > .clock > .second{
+    transform-origin: top left;
+    position: absolute;
+    height: 85px;
+    width: 1px;
+    background-color: #fff;
+    box-shadow: 1px 1px 3px #fff;
+    top: 100px;
+    left: 100px;
+    z-index: 3;
+}
