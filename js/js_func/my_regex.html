@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./../JQuery/jquery-3.7.1.min.js"></script>
+    <script>
+        $(()=>{
+            
+            let pwdChk = false;
+
+            let success=$(".wrapper > form > input[data-check=가입]").on("click",function(){
+                let res = true;
+                let inputs = $(".wrapper > form > input[type=text]");
+                let regexs = [/^\w{3,}/,//아이디
+                    /^[\w|ㄱ-ㅎ|가-힣]{4,}/,//비번
+                    /^[\w|ㄱ-ㅎ|가-힣]{4,}/,//비번 확인
+                    /[0-9]*[a-z A-Z 0-9+]+[0-9]*@+[a-z A-Z]+[.]+[a-z]+$/,//이메일 양식 다시 숫자를 도중에 포함되게
+                    /^[\d]{2,3}[-]+[\d]{4}[-]+[\d]{4}$/,//전화번호
+                    /^[가-힣]{1,7}$/, //이름
+                    /^[0-9]{6}$/,
+                    /^[0-9]{7}$/
+                ]; 
+                let alerts = [
+                    "아이디를",
+                    "비밀번호를","비밀번호 확인을",
+                    "이메일 양식을","전화번호를","이름을","주민번호를","주민번호를"
+                ]; 
+                $(regexs).each(function(i,regex){
+                        if(!regex.test(inputs[i].value)){
+                            alert(alerts[i]+"확인 하세요");
+                            return res=false;
+                        }else if(!pwdChk){
+                            res = false;
+                            alert("비밀번호 확인을 다시 해주세요.")
+                            return res = false;
+                        }
+                    });
+
+                    if(res == true){
+                        alert("가입 완료");
+                    }
+                    
+                    return res;
+            })
+
+
+            $(".wrapper > form > input[data-check=확인]").on("click",function(){
+                let pwd = $("input[name=pwd]");
+                let pwdChkInput = $("input[name=pwd-chk]");
+
+                if(pwd.val() == pwdChkInput.val()){
+                    pwdChk = true;
+                }else{
+                    pwdChk =false;
+                }
+
+                console.log(pwdChk);
+            });
+        })
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+        <form action="#">
+            <input type="text" name="id" placeholder="아이디" /><br/>
+            <input type="text" name="pwd" placeholder="비밀번호" />
+            <input type="text" name="pwd-chk" placeholder="비밀번호 확인" />
+            <input type="button" data-check="확인" value="확인"/><br/>
+            <input type="text" placeholder="이메일@도메인"/><br/>
+            <input type="text" placeholder="전화번호 ex ==> ###-####-####" /><br/>
+            <input type="text" placeholder="이름" /><br/>
+            <input type="text" placeholder="주민번호 앞자리" />-<input type="text" placeholder="주민번호 뒷자리" /><br/>
+            <input type="button" data-check="가입" value="가입">
+        </form>
+    </div>
+</body>
+</html>
